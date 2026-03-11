@@ -148,7 +148,39 @@ def parse_listing(text: str) -> dict:
             except ValueError: mi = None
     if mi is not None:
         d["mileage"] = mi
+    
+    #transmission(A06)
+    t = re.search(r"\b(automatic|auto|manual|cvt|stick\s?shift)\b", text, re.I)
+    if t:
+        raw = t.group(1).lower()
+        d["transmission"] = "automatic" if raw in ["automatic", "auto", "cvt", "cvT"] else "manual"
+    
+    #fuel type(A06)
+    f = re.search(r'\b(gas|gasoline|diesel|electric|ev|hybrid)\b', text, re.I)
+    if f:
+        raw = f.group(1).lower()
+        if raw in ["gas", "gasoline"]:
+            d["fuel_type"] = "gas"
+        elif raw == "diesel":
+            d["fuel_type"] = "diesel"
+        elif raw in ["electric", "ev"]:
+            d["fuel_type"] = "electric"
+        elif raw == "hybrid":
+            d["fuel_type"] = "hybrid"
 
+    #Drivetrain(A06)
+    dr = re.search(r'\b(4wd|awd|fwd|rwd|four\s?wheel\s?drive|rear\s?wheel\s?drive|front\s?wheel\s?drive|all\s?wheel\s?drive)\b', text, re.I)
+    if dr: 
+        raw = dr.group(1).lower()
+        if raw in ["awd", "all wheel drive"]:
+            d["drivetrain"] = "AWD"
+        elif raw in ["4wd", "four wheel drive"]:
+            d["drivetrain"] = "4WD"
+        elif raw in ["fwd", "front wheel drive"]:
+            d["drivetrain"] = "FWD"
+        elif raw in ["rwd", "rear wheel drive"]:
+            d["drivetrain"] = "RWD"
+            
     return d
 
 # -------------------- HTTP ENTRY --------------------
