@@ -156,7 +156,7 @@ def _safe_int(x):
 # -------------------- VERTEX AI CALL --------------------
 def _vertex_extract_fields(raw_text: str) -> dict:
     """
-    Ask Gemini to return JSON with exactly: price, year, make, model, mileage.
+    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, condition, color, body_type, title_status.
     """
     model = _get_vertex_model()
 
@@ -169,6 +169,10 @@ def _vertex_extract_fields(raw_text: str) -> dict:
             "make": {"type": "string", "nullable": True},
             "model": {"type": "string", "nullable": True},
             "mileage": {"type": "integer", "nullable": True},
+            "condition": {"type": "string", "nullable": True},
+            "color": {"type": "string", "nullable": True},
+            "body_type": {"type": "string", "nullable": True},
+            "title_status": {"type": "string", "nullable": True},
         },
         "required": ["price", "year", "make", "model", "mileage"]
     }
@@ -179,6 +183,10 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "Return a strict JSON object that conforms to the provided schema. "
         "If a value is not present, use null. "
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
+        "normalize condition to one of: new, like new, good, fair, salvage; "
+        "normalize color to basic color names; "
+        "normalize body_type to: sedan, suv, truck, coupe, convertible, van, wagon, hatchback; "
+        "normalize title_status to: clean, salvage, rebuilt, flood, missing, other. "
         "do not infer values not explicitly present; do not add extra keys."
     )
 
@@ -230,6 +238,10 @@ def _vertex_extract_fields(raw_text: str) -> dict:
 
     parsed["make"] = _norm_str(parsed.get("make"))
     parsed["model"] = _norm_str(parsed.get("model"))
+    parsed["condition"] = _norm_str(parsed.get("condition"))
+    parsed["color"] = _norm_str(parsed.get("color"))
+    parsed["body_type"] = _norm_str(parsed.get("body_type"))
+    parsed["title_status"] = _norm_str(parsed.get("title_status"))
 
     return parsed
 
