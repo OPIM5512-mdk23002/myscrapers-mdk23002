@@ -173,8 +173,11 @@ def _vertex_extract_fields(raw_text: str) -> dict:
             "color": {"type": "string", "nullable": True},
             "body_type": {"type": "string", "nullable": True},
             "title_status": {"type": "string", "nullable": True},
+            "city": {"type": "string", "nullable": True},
+            "state": {"type": "string", "nullable": True},
+            "zip_code": {"type": "string", "nullable": True}
         },
-        "required": ["price", "year", "make", "model", "mileage", "condition", "color", "body_type", "title_status"]
+        "required": ["price", "year", "make", "model", "mileage"]#Removed llm fields from required list to allow nulls
     }
 
     # System instruction (will be prepended to the prompt)
@@ -185,8 +188,11 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
         "normalize condition to one of: new, like new, good, fair, salvage; "
         "normalize color to basic color names; "
-        "normalize body_type to: sedan, suv, truck, coupe, convertible, van, wagon, hatchback; "
-        "normalize title_status to: clean, salvage, rebuilt, flood, missing, other. "
+        "normalize body_type to: sedan, suv, truck, coupe, convertible, van, wagon, hatchback;"
+        "normalize title_status to: clean, salvage, rebuilt, flood, missing, other;"
+        "city should be a city name in proper case;"
+        "state should be the two-letter US state abbreviation in uppercase (e.g., CA, CT, MA);"
+        "zip_code should be the 5-digit ZIP code as a string; "
         "do not infer values not explicitly present; do not add extra keys."
     )
 
@@ -238,10 +244,15 @@ def _vertex_extract_fields(raw_text: str) -> dict:
 
     parsed["make"] = _norm_str(parsed.get("make"))
     parsed["model"] = _norm_str(parsed.get("model"))
+    #llm fields
     parsed["condition"] = _norm_str(parsed.get("condition"))
     parsed["color"] = _norm_str(parsed.get("color"))
     parsed["body_type"] = _norm_str(parsed.get("body_type"))
     parsed["title_status"] = _norm_str(parsed.get("title_status"))
+    #location fields
+    parsed["city"] = _norm_str(parsed.get("city"))
+    parsed["state"] = _norm_str(parsed.get("state"))
+    parsed["zip_code"] = _norm_str(parsed.get("zip_code"))
 
     return parsed
 
@@ -336,6 +347,11 @@ def llm_extract_http(request: Request):
                 "color": parsed.get("color"),
                 "body_type": parsed.get("body_type"),
                 "title_status": parsed.get("title_status"),
+                #location fields
+                "city": parsed.get("city"),
+                "state": parsed.get("state"),
+                "zip_code": parsed.get("zip_code"),
+                #llm metadata fields
                 "llm_provider": "vertex",
                 "llm_model": LLM_MODEL,
                 "llm_ts": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),

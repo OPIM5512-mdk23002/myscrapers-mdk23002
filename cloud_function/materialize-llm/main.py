@@ -31,6 +31,7 @@ CSV_COLUMNS = [
     "post_id", "run_id", "scraped_at",
     "price", "year", "make", "model", "mileage",
     "condition", "color", "body_type", "title_status",#new llm fields for A07
+    "city", "state", "zip_code",
     "source_txt"  
 ]
 
