@@ -26,12 +26,13 @@ storage_client = storage.Client()
 RUN_ID_ISO_RE   = re.compile(r"^\d{8}T\d{6}Z$")  # 20251026T170002Z
 RUN_ID_PLAIN_RE = re.compile(r"^\d{14}$")        # 20251026170002
 
-# Stable CSV schema for students
+# CSV schema
 CSV_COLUMNS = [
     "post_id", "run_id", "scraped_at",
     "price", "year", "make", "model", "mileage",
-    "condition", "color", "body_type", "title_status",#new llm fields for A07
-    "city", "state", "zip_code",
+    "transmission", "drive_train", "fuel_type", "engine_cylinders",
+    "condition", "color", "body_type", "title_status",
+    "city", "state", "zip_code",#location fields
     "source_txt"  
 ]
 

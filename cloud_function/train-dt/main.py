@@ -1,22 +1,30 @@
-# Decision Tree: train on all data < today (local TZ); hold out today
+# Tuned GradientBoosting model: train on all data < today (local TZ); hold out today
+# Saves predictions, metrics, permutation importance, and PDP plots to GCS
 # HTTP entrypoint: train_dt_http
 
 import os, io, json, logging, traceback, re
 import numpy as np
 import pandas as pd
+#setting matplotlib non interactive backend for cloud function environment
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
 from google.cloud import storage
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.inspection import permutation_importance, PartialDependenceDisplay
 
 # ---- ENV ----
 PROJECT_ID     = os.getenv("PROJECT_ID", "")
 GCS_BUCKET     = os.getenv("GCS_BUCKET", "")
-DATA_KEY       = os.getenv("DATA_KEY", "structured/datasets/listings_master.csv")
-OUTPUT_PREFIX  = os.getenv("OUTPUT_PREFIX", "preds")            # e.g., "structured/preds"
+DATA_KEY       = os.getenv("DATA_KEY", "structured/datasets/listings_llm.csv")
+OUTPUT_PREFIX  = os.getenv("OUTPUT_PREFIX", "structured/preds")            # e.g., "structured/preds"
 TIMEZONE       = os.getenv("TIMEZONE", "America/New_York")      # split by local day
 LOG_LEVEL      = os.getenv("LOG_LEVEL", "INFO")
 
@@ -33,13 +41,27 @@ def _write_csv_to_gcs(client: storage.Client, bucket: str, key: str, df: pd.Data
     b = client.bucket(bucket)
     blob = b.blob(key)
     blob.upload_from_string(df.to_csv(index=False), content_type="text/csv")
+#saving dicts to GCS as JSON files
+def _write_json_to_gcs(client, bucket, key, data):
+    b = client.bucket(bucket)
+    blob = b.blob(key)
+    blob.upload_from_string(json.dumps(data, indent=2), content_type="application/json")
+#saving matplotlib figures to GCS as PNGs
+def _write_png_to_gcs(client, bucket, key, fig):
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", dpi = 150, bbox_inches="tight")
+    buf.seek(0)
+    b = client.bucket(bucket)
+    blob = b.blob(key)
+    blob.upload_from_string(buf.read(), content_type="image/png")
+    plt.close(fig)
 
 def _clean_numeric(s: pd.Series) -> pd.Series:
     # Strip $, commas, spaces; keep digits and dot
     s = s.astype(str).str.replace(r"[^\d.]+", "", regex=True).str.strip()
     return pd.to_numeric(s, errors="coerce")
 
-def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int = 10):
+def run_once(dry_run= False):
     client = storage.Client(project=PROJECT_ID)
     df = _read_csv_from_gcs(client, GCS_BUCKET, DATA_KEY)
 
@@ -62,6 +84,7 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
     df["price_num"]   = _clean_numeric(df["price"])
     df["year_num"]    = _clean_numeric(df["year"])
     df["mileage_num"] = _clean_numeric(df["mileage"])
+    df["engine_cylinders"] = _clean_numeric(df["engine_cylinders"])  # new llm field as numeric
 
     valid_price_rows = int(df["price_num"].notna().sum())
     logging.info("Rows total=%d | with valid numeric price=%d", orig_rows, valid_price_rows)
@@ -85,10 +108,10 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
     if len(train_df) < 40:
         return {"status": "noop", "reason": "too few training rows", "train_rows": int(len(train_df))}
 
-    # --- Model: make, model, year_num, mileage_num -> price_num ---
+    #Features: core + LLM-extracted fields
     target = "price_num"
-    cat_cols = ["make", "model"]
-    num_cols = ["year_num", "mileage_num"]
+    cat_cols = ["make", "model", "transmission", "drive_train", "fuel_type", "condition", "color", "body_type", "title_status"]
+    num_cols = ["year_num", "mileage_num", "engine_cylinders"]  # included engine_cylinders as numeric
     feats = cat_cols + num_cols
 
     pre = ColumnTransformer(
@@ -100,41 +123,133 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
             ]), cat_cols),
         ]
     )
+    #Model with hyperparameter tuning through GridSearchCV
+    base_model = GradientBoostingRegressor(random_state=23002,)
+    pipe = Pipeline([("pre", pre), ("model", base_model)])
 
-    model = DecisionTreeRegressor(max_depth=max_depth, min_samples_leaf=min_samples_leaf, random_state=42)
-    pipe = Pipeline([("pre", pre), ("model", model)])
+    param_grid = {
+        "model__n_estimators": [200, 300],
+        "model__max_depth": [5, 7],
+        "model__learning_rate": [0.05, 0.1],
+        "model__min_samples_leaf": [5, 10],
+    }
+
+    search = GridSearchCV(
+        pipe, 
+        param_grid, 
+        scoring="neg_mean_absolute_error", 
+        cv=3, 
+        n_jobs=-1, 
+        refit=True, 
+        verbose=1,
+        )
 
     X_train = train_df[feats]
     y_train = train_df[target]
-    pipe.fit(X_train, y_train)
+    search.fit(X_train, y_train)
+
+    best_pipe = search.best_estimator_
+    best_params = search.best_params_
+    best_cv_mae = float(-search.best_score_)
+
+    logging.info("Best params: %s", best_params)
+    logging.info("Best CV MAE: %.2f", best_cv_mae)
 
     # ---- Predict/evaluate on today's holdout (now includes actual price fields) ----
-    mae_today = None
+    mae_today = rmse_today = mape_today = bias_today = None
     preds_df = pd.DataFrame()
+
     if not holdout_df.empty:
         X_h = holdout_df[feats]
-        y_hat = pipe.predict(X_h)
+        y_hat = best_pipe.predict(X_h)
 
-        cols = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price"]
-        preds_df = holdout_df[cols].copy()
+        cols_out = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "transmission", "drive_train", "fuel_type", "engine_cylinders", 
+                    "condition", "color", "body_type", "title_status"]  # core + LLM fields for output
+        preds_df = holdout_df[cols_out].copy()
         preds_df["actual_price"] = holdout_df["price_num"]       # cleaned numeric truth
         preds_df["pred_price"]   = np.round(y_hat, 2)
 
-        if holdout_df["price_num"].notna().any():
-            y_true = holdout_df["price_num"]
-            mask = y_true.notna()
-            if mask.any():
-                mae_today = float(mean_absolute_error(y_true[mask], y_hat[mask]))
+        y_true = holdout_df["price_num"]
+        mask = y_true.notna()
+        if mask.any():
+            yt = y_true[mask]
+            yp = y_hat[mask]
+            mae_today  = float(mean_absolute_error(yt, yp))
+            rmse_today = float(np.sqrt(mean_squared_error(yt, yp)))
+            mape_today = float(np.mean(np.abs((yt - yp) / yt)) * 100)
+            bias_today = float(np.mean(yp - yt))
 
     # --- Output path: HOURLY folder structure ---
     now_utc = pd.Timestamp.utcnow().tz_convert("UTC")
-    out_key = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}/preds.csv"
+    run_folder = f"{OUTPUT_PREFIX}/{now_utc.strftime('%Y%m%d%H')}"
 
     if not dry_run and len(preds_df) > 0:
-        _write_csv_to_gcs(client, GCS_BUCKET, out_key, preds_df)
-        logging.info("Wrote predictions to gs://%s/%s (%d rows)", GCS_BUCKET, out_key, len(preds_df))
-    else:
-        logging.info("Dry run or no holdout rows; skip write. Would write to gs://%s/%s", GCS_BUCKET, out_key)
+      
+      #Prediction output CSV
+      preds_key = f"{run_folder}/preds.csv"
+      _write_csv_to_gcs(client, GCS_BUCKET, preds_key, preds_df)
+      logging.info("Saved predictions to gs://%s/%s", GCS_BUCKET, preds_key)
+      #Metrics JSON for trending notebook  
+      metrics = {
+          "run_ts": now_utc.isoformat(),
+          "today_local": str(today_local),
+          "train_rows": int(len(train_df)),
+          "holdout_rows": int(len(holdout_df)),
+          "mae_today": mae_today,
+          "rmse_today": rmse_today,
+          "mape_today": mape_today,
+          "bias_today": bias_today,
+          "best_cv_mae": best_cv_mae,
+          "best_params": best_params,
+      }
+      metrics_key = f"{run_folder}/metrics.json"
+      _write_json_to_gcs(client, GCS_BUCKET, metrics_key, metrics)
+      logging.info("Saved metrics to gs://%s/%s", GCS_BUCKET, metrics_key)
+
+      #Permutation importance JSON
+      if mask.any():
+          perm_result = permutation_importance(
+              best_pipe, X_h[mask], yt,
+              n_repeats=30, random_state=23002,
+              scoring="neg_mean_absolute_error")
+          
+          feature_names = feats
+          perm_df = pd.DataFrame({
+              "feature": feature_names,
+              "importance_mean": perm_result.importances_mean,}).sort_values("importance_mean", ascending=False)
+          
+          #Plotting permutation importance in ascending order for better visualization
+          perm_plot = perm_df.sort_values("importance_mean", ascending=True)
+          fig_pi, ax_pi = plt.subplots(figsize=(8, 5))
+          ax_pi.barh(perm_plot["feature"], perm_plot["importance_mean"], color="blue")
+          ax_pi.set_xlabel("Mean MAE Increase")
+          ax_pi.set_title("Permutation Importance")
+
+
+          perm_data_key = f"{run_folder}/permutation_importance.json"
+          _write_json_to_gcs(client, GCS_BUCKET, perm_data_key, perm_df.to_dict(orient="records"))
+          logging.info("Saved permutation importance JSON to gs://%s/%s", GCS_BUCKET, perm_data_key)
+
+          pi_key = f"{run_folder}/permutation_importance.png"
+          _write_png_to_gcs(client, GCS_BUCKET, pi_key, fig_pi)
+          logging.info("Saved permutation importance plot to gs://%s/%s", GCS_BUCKET, pi_key)
+
+          #Partial Dependence Plots for top 3 features
+          top_3 = perm_df["feature"].head(3).tolist()
+          fig_pdp, axes_pdp = plt.subplots(1, 3, figsize=(15, 5))
+          PartialDependenceDisplay.from_estimator(
+              best_pipe, X_h, features=top_3,
+              feature_names=feats,
+              ax=axes_pdp,
+              kind="average",
+              categorical_features=cat_cols,
+          )
+          fig_pdp.suptitle(f"Partial Dependence — Top 3 Features — {today_local}", fontsize=14)
+          plt.tight_layout()
+
+          pdp_key = f"{run_folder}/pdp_top3.png"
+          _write_png_to_gcs(client, GCS_BUCKET, pdp_key, fig_pdp)
+          logging.info("Wrote PDP to gs://%s/%s", GCS_BUCKET, pdp_key)
 
     return {
         "status": "ok",
@@ -143,7 +258,12 @@ def run_once(dry_run: bool = False, max_depth: int = 12, min_samples_leaf: int =
         "holdout_rows": int(len(holdout_df)),
         "valid_price_rows": valid_price_rows,
         "mae_today": mae_today,
-        "output_key": out_key,
+        "rmse_today": rmse_today,
+        "mape_today": mape_today,
+        "bias_today": bias_today,
+        "best_cv_mae": best_cv_mae,
+        "best_params": best_params,
+        "output_folder": run_folder,
         "dry_run": dry_run,
         "timezone": TIMEZONE,
     }
@@ -153,8 +273,6 @@ def train_dt_http(request):
         body = request.get_json(silent=True) or {}
         result = run_once(
             dry_run=bool(body.get("dry_run", False)),
-            max_depth=int(body.get("max_depth", 12)),
-            min_samples_leaf=int(body.get("min_samples_leaf", 10)),
         )
         code = 200 if result.get("status") == "ok" else 204
         return (json.dumps(result), code, {"Content-Type": "application/json"})
