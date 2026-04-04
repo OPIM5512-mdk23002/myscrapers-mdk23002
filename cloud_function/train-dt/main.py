@@ -78,7 +78,7 @@ def run_once(dry_run= False):
     except Exception:
         df["scraped_at_local"] = df["scraped_at_dt_utc"]
     df["date_local"] = df["scraped_at_local"].dt.date
-
+    df = df[df["date_local"].notna()].copy()
     # --- Clean numerics BEFORE counting/dropping ---
     orig_rows = len(df)
     df["price_num"]   = _clean_numeric(df["price"])
