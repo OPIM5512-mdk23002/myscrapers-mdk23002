@@ -156,7 +156,8 @@ def _safe_int(x):
 # -------------------- VERTEX AI CALL --------------------
 def _vertex_extract_fields(raw_text: str) -> dict:
     """
-    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, condition, color, body_type, title_status.
+    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, transmission, drive_train, fuel_type, engine_cylinders, 
+    condition, color, body_type, title_status, city, state, zip_code.
     """
     model = _get_vertex_model()
 
@@ -169,10 +170,16 @@ def _vertex_extract_fields(raw_text: str) -> dict:
             "make": {"type": "string", "nullable": True},
             "model": {"type": "string", "nullable": True},
             "mileage": {"type": "integer", "nullable": True},
+            #new llm fields
+            "transmission": {"type": "string", "nullable": True},
+            "drive_train": {"type": "string", "nullable": True},
+            "fuel_type": {"type": "string", "nullable": True},
+            "engine_cylinders": {"type": "integer", "nullable": True},
             "condition": {"type": "string", "nullable": True},
             "color": {"type": "string", "nullable": True},
             "body_type": {"type": "string", "nullable": True},
             "title_status": {"type": "string", "nullable": True},
+            #location fields
             "city": {"type": "string", "nullable": True},
             "state": {"type": "string", "nullable": True},
             "zip_code": {"type": "string", "nullable": True}
@@ -186,12 +193,18 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "Return a strict JSON object that conforms to the provided schema. "
         "If a value is not present, use null. "
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
+        "normalize make to full manufacturer name in title case (e.g., 'VW' to 'Volkswagen', 'Chevy' to 'Chevrolet'); "
+        "normalize model to title case without trim levels (e.g. 'camry se' to 'Camry', 'silverado' to 'Silverado'); "
+        "normalize transmission to: automatic, manual, null if unclear; "
+        "normalize drive_train to: fwd, rwd, awd, 4wd, null if unclear; "
+        "normalize fuel_type to: gasoline, diesel, electric, hybrid, null if unclear; "
+        "normalize engine_cylinders to an integer(e.g. 4, 6, 8) or null if unclear; "
         "normalize condition to one of: new, like new, good, fair, salvage; "
         "normalize color to basic color names; "
-        "normalize body_type to: sedan, suv, truck, coupe, convertible, van, wagon, hatchback;"
-        "normalize title_status to: clean, salvage, rebuilt, flood, missing, other;"
-        "city should be a city name in proper case;"
-        "state should be the two-letter US state abbreviation in uppercase (e.g., CA, CT, MA);"
+        "normalize body_type to: sedan, suv, truck, coupe, convertible, van, wagon, hatchback; "
+        "normalize title_status to: clean, salvage, rebuilt, flood, missing, other; "
+        "city should be a city name in proper case; "
+        "state should be the two-letter US state abbreviation in uppercase (e.g., CA, CT, MA); "
         "zip_code should be the 5-digit ZIP code as a string; "
         "do not infer values not explicitly present; do not add extra keys."
     )
@@ -244,7 +257,11 @@ def _vertex_extract_fields(raw_text: str) -> dict:
 
     parsed["make"] = _norm_str(parsed.get("make"))
     parsed["model"] = _norm_str(parsed.get("model"))
-    #llm fields
+    #newllm fields
+    parsed["transmission"] = _norm_str(parsed.get("transmission"))
+    parsed["drive_train"] = _norm_str(parsed.get("drive_train"))
+    parsed["fuel_type"] = _norm_str(parsed.get("fuel_type"))
+    parsed["engine_cylinders"] = _safe_int(parsed.get("engine_cylinders"))
     parsed["condition"] = _norm_str(parsed.get("condition"))
     parsed["color"] = _norm_str(parsed.get("color"))
     parsed["body_type"] = _norm_str(parsed.get("body_type"))
@@ -341,8 +358,11 @@ def llm_extract_http(request: Request):
                 "make": parsed.get("make"),
                 "model": parsed.get("model"),
                 "mileage": parsed.get("mileage"),
-
-                #llm fields
+                #new llm fields
+                "transmission": parsed.get("transmission"),
+                "drive_train": parsed.get("drive_train"),
+                "fuel_type": parsed.get("fuel_type"),
+                "engine_cylinders": parsed.get("engine_cylinders"),
                 "condition": parsed.get("condition"),
                 "color": parsed.get("color"),
                 "body_type": parsed.get("body_type"),

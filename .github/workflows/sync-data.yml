@@ -1,0 +1,86 @@
+run-name: Syncing predictions and artifacts for ${{ github.ref_name }} by @${{ github.actor }}
+
+on:
+  schedule:
+    - cron: '45 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+env:
+  PROJECT_ID: ${{ vars.PROJECT_ID }}
+  BUCKET_NAME: ${{ vars.BUCKET_NAME }}
+  WORKLOAD_IDENTITY_PROVIDER: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
+  DEPLOYER_SA: ${{ vars.DEPLOYER_SA }}
+  GCS_PREDS_PREFIX: "structured/preds"
+  OUTPUT_DIR: "results"
+
+jobs:
+  sync_data:
+    runs-on: ubuntu-latest
+    steps:
+      # --- SETUP & AUTHENTICATION ---
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auth (WIF) and Setup gcloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.DEPLOYER_SA }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      # --- DOWNLOAD ALL ARTIFACTS ---
+      - name: Find Latest Run ID, Download All Artifacts
+        id: download_artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Find the latest run folder in GCS
+          LATEST_RUN_DIR=$(gsutil ls -d gs://${BUCKET_NAME}/${GCS_PREDS_PREFIX}/*/ | tail -1)
+          LATEST_RUN_ID=$(echo "$LATEST_RUN_DIR" | sed -E "s|gs://${BUCKET_NAME}/${GCS_PREDS_PREFIX}/||; s|/||")
+
+          echo "run_id=$LATEST_RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "Detected latest run ID: $LATEST_RUN_ID"
+
+          mkdir -p ${{ env.OUTPUT_DIR }}
+
+          # Download each artifact, prefixed with run_id for uniqueness
+          for FILE in preds.csv metrics.json permutation_importance.json permutation_importance.png pdp_top3.png; do
+            GCS_PATH="gs://${BUCKET_NAME}/${GCS_PREDS_PREFIX}/${LATEST_RUN_ID}/${FILE}"
+            LOCAL_PATH="${{ env.OUTPUT_DIR }}/${LATEST_RUN_ID}-${FILE}"
+
+            if gsutil -q stat "$GCS_PATH" 2>/dev/null; then
+              gsutil cp "$GCS_PATH" "$LOCAL_PATH"
+              echo "Downloaded: $LOCAL_PATH"
+            else
+              echo "Not found (skipping): $GCS_PATH"
+            fi
+          done
+
+      # --- COMMIT AND PUSH ---
+      - name: Commit and Push Artifacts
+        if: success()
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          RUN_ID="${{ steps.download_artifacts.outputs.run_id }}"
+
+          git add ${{ env.OUTPUT_DIR }}/
+          
+          # --allow-empty prevents failure if no new files were downloaded
+          git diff --staged --quiet && echo "No new files to commit" && exit 0
+          
+          git commit -m "🤖 Data Sync: Add predictions and model artifacts for run $RUN_ID"
+
+          git pull --rebase origin main
+          git push
