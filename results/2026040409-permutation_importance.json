@@ -1,31 +1,31 @@
 [
   {
     "feature": "mileage_num",
-    "importance_mean": 2466.626234376038
+    "importance_mean": 2240.286063480392
   },
   {
     "feature": "year_num",
-    "importance_mean": 1499.6285189150071
+    "importance_mean": 1347.4132761295562
   },
   {
     "feature": "color",
-    "importance_mean": 456.7633759568192
-  },
-  {
-    "feature": "make",
-    "importance_mean": 265.89076026142266
+    "importance_mean": 482.08811539261063
   },
   {
     "feature": "body_type",
-    "importance_mean": 150.0200429534834
+    "importance_mean": 255.06730240889073
+  },
+  {
+    "feature": "make",
+    "importance_mean": 140.37283868850923
   },
   {
     "feature": "condition",
-    "importance_mean": 9.287607391013838
+    "importance_mean": 80.43056818308324
   },
   {
     "feature": "model",
-    "importance_mean": 1.4607590592236193
+    "importance_mean": 12.87763458946838
   },
   {
     "feature": "transmission",
