@@ -1,3 +1,4 @@
+name: Data Sync Hourly Predictions to Repo
 run-name: Syncing predictions and artifacts for ${{ github.ref_name }} by @${{ github.actor }}
 
 on:

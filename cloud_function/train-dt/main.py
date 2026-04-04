@@ -110,7 +110,7 @@ def run_once(dry_run= False):
 
     #Features: core + LLM-extracted fields
     target = "price_num"
-    cat_cols = ["make", "model", "transmission", "drive_train", "fuel_type", "condition", "color", "body_type", "title_status"]
+    cat_cols = ["make", "model", "transmission", "drivetrain", "fuel_type", "condition", "color", "body_type", "title_status"]
     num_cols = ["year_num", "mileage_num", "engine_cylinders"]  # included engine_cylinders as numeric
     feats = cat_cols + num_cols
 
@@ -163,7 +163,7 @@ def run_once(dry_run= False):
         X_h = holdout_df[feats]
         y_hat = best_pipe.predict(X_h)
 
-        cols_out = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "transmission", "drive_train", "fuel_type", "engine_cylinders", 
+        cols_out = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "transmission", "drivetrain", "fuel_type", "engine_cylinders", 
                     "condition", "color", "body_type", "title_status"]  # core + LLM fields for output
         preds_df = holdout_df[cols_out].copy()
         preds_df["actual_price"] = holdout_df["price_num"]       # cleaned numeric truth

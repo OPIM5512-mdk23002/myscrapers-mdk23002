@@ -156,7 +156,7 @@ def _safe_int(x):
 # -------------------- VERTEX AI CALL --------------------
 def _vertex_extract_fields(raw_text: str) -> dict:
     """
-    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, transmission, drive_train, fuel_type, engine_cylinders, 
+    Ask Gemini to return JSON with exactly: price, year, make, model, mileage, transmission, drivetrain, fuel_type, engine_cylinders, 
     condition, color, body_type, title_status, city, state, zip_code.
     """
     model = _get_vertex_model()
@@ -172,7 +172,7 @@ def _vertex_extract_fields(raw_text: str) -> dict:
             "mileage": {"type": "integer", "nullable": True},
             #new llm fields
             "transmission": {"type": "string", "nullable": True},
-            "drive_train": {"type": "string", "nullable": True},
+            "drivetrain": {"type": "string", "nullable": True},
             "fuel_type": {"type": "string", "nullable": True},
             "engine_cylinders": {"type": "integer", "nullable": True},
             "condition": {"type": "string", "nullable": True},
@@ -196,7 +196,7 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "normalize make to full manufacturer name in title case (e.g., 'VW' to 'Volkswagen', 'Chevy' to 'Chevrolet'); "
         "normalize model to title case without trim levels (e.g. 'camry se' to 'Camry', 'silverado' to 'Silverado'); "
         "normalize transmission to: automatic, manual, null if unclear; "
-        "normalize drive_train to: fwd, rwd, awd, 4wd, null if unclear; "
+        "normalize drivetrain to: fwd, rwd, awd, 4wd, null if unclear; "
         "normalize fuel_type to: gasoline, diesel, electric, hybrid, null if unclear; "
         "normalize engine_cylinders to an integer(e.g. 4, 6, 8) or null if unclear; "
         "normalize condition to one of: new, like new, good, fair, salvage; "
@@ -259,7 +259,7 @@ def _vertex_extract_fields(raw_text: str) -> dict:
     parsed["model"] = _norm_str(parsed.get("model"))
     #newllm fields
     parsed["transmission"] = _norm_str(parsed.get("transmission"))
-    parsed["drive_train"] = _norm_str(parsed.get("drive_train"))
+    parsed["drivetrain"] = _norm_str(parsed.get("drivetrain"))
     parsed["fuel_type"] = _norm_str(parsed.get("fuel_type"))
     parsed["engine_cylinders"] = _safe_int(parsed.get("engine_cylinders"))
     parsed["condition"] = _norm_str(parsed.get("condition"))
@@ -360,7 +360,7 @@ def llm_extract_http(request: Request):
                 "mileage": parsed.get("mileage"),
                 #new llm fields
                 "transmission": parsed.get("transmission"),
-                "drive_train": parsed.get("drive_train"),
+                "drivetrain": parsed.get("drivetrain"),
                 "fuel_type": parsed.get("fuel_type"),
                 "engine_cylinders": parsed.get("engine_cylinders"),
                 "condition": parsed.get("condition"),
