@@ -235,7 +235,12 @@ def run_once(dry_run= False):
           logging.info("Saved permutation importance plot to gs://%s/%s", GCS_BUCKET, pi_key)
 
           #Partial Dependence Plots for top 3 features
-          top_3 = perm_df["feature"].head(3).tolist()
+          #Only include features that were non-null in training which the imputer could actually learn from
+          #and that have data in holdout for PDP to compute on
+          valid_feats = [f for f in perm_df["feature"]
+                    if X_train[f].notna().any() and X_h[f].notna().any()]
+          top_3 = valid_feats[:3]
+          
           fig_pdp, axes_pdp = plt.subplots(1, 3, figsize=(15, 5))
           PartialDependenceDisplay.from_estimator(
               best_pipe, X_h, features=top_3,
