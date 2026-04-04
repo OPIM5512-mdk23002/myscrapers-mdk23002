@@ -240,10 +240,16 @@ def run_once(dry_run= False):
           valid_feats = [f for f in perm_df["feature"]
                     if X_train[f].notna().any() and X_h[f].notna().any()]
           top_3 = valid_feats[:3]
+
+          # Fill NaN in categorical columns so PDP can sort unique values
+          X_h_pdp = X_h.copy()
+          for col in cat_cols:
+              if col in X_h_pdp.columns:
+                  X_h_pdp[col] = X_h_pdp[col].fillna("unknown")
           
           fig_pdp, axes_pdp = plt.subplots(1, 3, figsize=(15, 5))
           PartialDependenceDisplay.from_estimator(
-              best_pipe, X_h, features=top_3,
+              best_pipe, X_h_pdp, features=top_3,
               feature_names=feats,
               ax=axes_pdp,
               kind="average",
