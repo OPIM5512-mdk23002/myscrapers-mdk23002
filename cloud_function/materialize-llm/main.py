@@ -8,6 +8,8 @@
 import csv
 import io
 import json
+import logging
+logging.basicConfig(level=logging.INFO)
 import os
 import re
 from datetime import datetime, timezone
@@ -98,7 +100,7 @@ def _write_csv(records: Iterable[Dict], dest_key: str, columns=CSV_COLUMNS) -> i
 def materialize_http(request: Request):
     """
     HTTP POST (no body needed).
-    Crawls ALL structured run folders, de-dupes by post_id (keep newest run),
+    Crawls recent structured run folders, de-dupes by post_id (keep newest run),
     and writes one CSV directly to .../datasets/listings_llm.csv.
     Returns JSON with counts and output path.
     """
@@ -109,6 +111,12 @@ def materialize_http(request: Request):
         run_ids = _list_run_ids(BUCKET_NAME, STRUCTURED_PREFIX)
         if not run_ids:
             return jsonify({"ok": False, "error": f"no runs found under {STRUCTURED_PREFIX}/"}), 200
+        
+        # Limit to most recent N runs to prevent Cloud Function timeout.
+        MAX_RUNS = int(os.getenv("MAX_RUNS", "200"))
+        if len(run_ids) > MAX_RUNS:
+            logging.info("Limiting from %d to %d most recent runs", len(run_ids), MAX_RUNS)
+            run_ids = run_ids[-MAX_RUNS:]
 
         latest_by_post: Dict[str, Dict] = {}
         for rid in run_ids:
