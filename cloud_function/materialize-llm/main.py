@@ -130,7 +130,12 @@ def materialize_http(request: Request):
 
         base = f"{STRUCTURED_PREFIX}/datasets"
         final_key = f"{base}/listings_llm.csv"
-        rows = _write_csv(latest_by_post.values(), final_key)
+
+        sorted_records = sorted(
+            latest_by_post.values(), 
+            key=lambda r: r.get("scraped_at") or "",# sort by scraped_at if available, otherwise no particular order
+            )
+        rows = _write_csv(sorted_records, final_key)
 
         return jsonify({
             "ok": True,
