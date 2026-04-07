@@ -1,7 +1,6 @@
 name: Data Sync Hourly Predictions to Repo
 run-name: Syncing predictions and artifacts for ${{ github.ref_name }} by @${{ github.actor }}
 # workflow to sync the latest predictions and artifacts from GCS to the repo every hour, and also on demand via workflow_dispatch
-# Workflow occasionally doesn't trigger on schedule, but should always work on workflow_dispatch
 on:
   schedule:
     - cron: '45 * * * *'
