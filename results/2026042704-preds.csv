@@ -1,0 +1,11 @@
+post_id,scraped_at,make,model,year,mileage,price,transmission,drivetrain,fuel_type,engine_cylinders,condition,color,body_type,title_status,actual_price,pred_price
+7927028187,2026-04-27T04:00:32Z,Ford,Fiesta,2019,30155.0,8950.0,automatic,fwd,gasoline,4.0,like new,grey,hatchback,clean,8950.0,7618.03
+7927195284,2026-04-27T04:00:32Z,Chevrolet,Traverse,2018,103220.0,9499.0,automatic,awd,gasoline,6.0,good,grey,suv,clean,9499.0,17271.56
+7927856642,2026-04-27T04:00:32Z,GMC,Acadia,2016,110000.0,9885.0,automatic,awd,gasoline,6.0,like new,black,suv,clean,9885.0,8507.18
+7927489505,2026-04-27T04:00:32Z,Land Rover,Defender,1997,10600.0,56000.0,manual,4wd,diesel,4.0,good,green,suv,clean,56000.0,28323.97
+7927638506,2026-04-27T04:00:32Z,Mercedes-Benz,GL450,2011,98000.0,8985.0,automatic,4wd,gasoline,8.0,like new,blue,suv,clean,8985.0,10058.58
+7927941456,2026-04-27T04:00:32Z,Ford,Econoline Cargo Van,2014,91374.0,12300.0,automatic,fwd,gasoline,8.0,,white,van,clean,12300.0,19238.36
+7927325013,2026-04-27T04:00:32Z,Volkswagen,Passat,2014,86000.0,5500.0,automatic,fwd,gasoline,4.0,good,black,sedan,clean,5500.0,8429.05
+7927579472,2026-04-27T04:00:32Z,Ford,Country Squire,1951,91000.0,22500.0,manual,rwd,gasoline,8.0,good,black,wagon,clean,22500.0,17461.81
+7927745584,2026-04-27T04:00:32Z,Ford,F-150,2006,207000.0,3800.0,automatic,4wd,gasoline,8.0,good,blue,truck,clean,3800.0,4618.85
+7927199298,2026-04-27T04:00:32Z,Mercedes,ML350,2011,180000.0,4999.0,automatic,awd,gasoline,,good,,suv,clean,4999.0,4427.9
