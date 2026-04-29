@@ -1,0 +1,256 @@
+post_id,scraped_at,make,model,year,mileage,price,transmission,drivetrain,fuel_type,engine_cylinders,condition,color,body_type,title_status,actual_price,pred_price
+7929151326,2026-04-28T04:00:37Z,Subaru,Crosstrek,2018,173000.0,8900.0,automatic,4wd,gasoline,4.0,good,red,wagon,clean,8900.0,9402.79
+7929670856,2026-04-28T04:00:37Z,Jeep,Wrangler,2012,233485.0,8000.0,automatic,4wd,gasoline,6.0,good,black,suv,clean,8000.0,-490.43
+7928526611,2026-04-28T06:00:43Z,Toyota,Highlander,2019,99548.0,23900.0,automatic,4wd,hybrid,6.0,like new,white,suv,clean,23900.0,14020.43
+7929147219,2026-04-28T06:00:43Z,Subaru,XV Crosstrek,2014,136625.0,9900.0,automatic,4wd,gasoline,4.0,good,White,wagon,clean,9900.0,9125.89
+7929297535,2026-04-28T07:00:41Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7930464667,2026-04-28T07:00:41Z,Chevrolet,Caprice,1988,69541.0,17500.0,automatic,,gasoline,8.0,,Cream,wagon,clean,17500.0,17605.17
+7930465081,2026-04-28T07:00:41Z,Chevrolet,Camaro,1969,4664.0,58000.0,automatic,,gasoline,,good,blue,,clean,58000.0,58082.3
+7930520115,2026-04-28T07:00:41Z,Mercedes-Benz,E350,2011,188000.0,1400.0,automatic,,gasoline,,salvage,black,sedan,clean,1400.0,5646.88
+7928723482,2026-04-28T09:00:07Z,Toyota,Sequoia,2006,167781.0,6995.0,automatic,4wd,gasoline,8.0,good,grey,suv,clean,6995.0,11218.06
+7928523681,2026-04-28T09:00:07Z,Ford,Mustang,2011,105405.0,10900.0,manual,rwd,gasoline,6.0,like new,white,coupe,clean,10900.0,24699.68
+7928686295,2026-04-28T09:00:07Z,Ford,Lightning,1994,163000.0,7200.0,automatic,rwd,gasoline,8.0,good,red,truck,clean,7200.0,13140.48
+7929814768,2026-04-28T09:00:07Z,Mazda,6,2009,115508.0,4995.0,automatic,fwd,gasoline,6.0,good,Silver,,clean,4995.0,6209.82
+7929873654,2026-04-28T09:00:07Z,Dodge,Journey,2014,138000.0,4500.0,automatic,awd,gasoline,6.0,good,white,suv,clean,4500.0,9536.71
+7930147396,2026-04-28T09:00:07Z,Chevrolet,Equinox,2024,16302.0,24679.0,automatic,awd,gasoline,4.0,good,Bronze,suv,clean,24679.0,21272.23
+7929999342,2026-04-28T09:00:07Z,Jeep,Compass,2015,155000.0,4500.0,automatic,4wd,gasoline,4.0,like new,Grey,SUV,clean,4500.0,8932.78
+7930464723,2026-04-28T09:00:07Z,Jeep,Cherokee,2019,95682.0,13990.0,automatic,4wd,gasoline,6.0,,white,suv,clean,13990.0,13485.31
+7928819683,2026-04-28T10:00:07Z,Audi,S7,2014,118800.0,16000.0,automatic,4wd,gasoline,8.0,good,Silver,sedan,other,16000.0,15727.55
+7930184707,2026-04-28T10:00:07Z,Nissan,Pathfinder,2016,114000.0,8885.0,automatic,4wd,gasoline,6.0,good,blue,suv,clean,8885.0,12325.16
+7929701625,2026-04-28T10:00:07Z,Acura,Tlx,2022,30000.0,2000.0,automatic,,gasoline,,,,sedan,clean,2000.0,6120.02
+7930505867,2026-04-28T10:00:07Z,Mercedes-Benz,Glc,2025,11506.0,58719.0,automatic,awd,gasoline,4.0,good,black,suv,clean,58719.0,21364.32
+7930454144,2026-04-28T10:00:07Z,Hyundai,Elantra,2010,133500.0,3400.0,automatic,fwd,gasoline,4.0,good,grey,sedan,clean,3400.0,3766.33
+7930464360,2026-04-28T10:00:07Z,Ford,Super Duty F-350,2015,264719.0,16900.0,automatic,4wd,diesel,8.0,,Bronze,truck,clean,16900.0,17252.34
+7930465553,2026-04-28T10:00:07Z,Chevrolet,Bel Air,1956,1250.0,175000.0,manual,,gasoline,,,black,convertible,clean,175000.0,171364.6
+7929382589,2026-04-28T11:00:06Z,Kia,Rio,2013,26000.0,5000.0,automatic,,gasoline,,good,red,hatchback,clean,5000.0,12468.23
+7929782243,2026-04-28T11:00:06Z,BMW,3 Series,2007,117112.0,5900.0,automatic,rwd,gasoline,6.0,,black,sedan,clean,5900.0,5677.04
+7929914822,2026-04-28T11:00:06Z,Acura,TLX,2022,24000.0,,automatic,4wd,gasoline,4.0,like new,red,sedan,clean,,1583.8
+7929933457,2026-04-28T11:00:06Z,Chevrolet,Malibu,2024,29394.0,18317.0,automatic,fwd,gasoline,4.0,good,Black,sedan,clean,18317.0,2665.37
+7930124601,2026-04-28T11:00:06Z,Ford,Escape,2018,84000.0,9900.0,automatic,4wd,gasoline,4.0,good,Silver,suv,clean,9900.0,14652.59
+7930091085,2026-04-28T11:00:06Z,Acura,TLX,2018,30000.0,,automatic,4wd,gasoline,4.0,like new,red,sedan,clean,,2758.38
+7929149342,2026-04-28T12:00:06Z,Honda,CR-V,2014,130000.0,11900.0,automatic,4wd,gasoline,4.0,good,brown,suv,clean,11900.0,12083.04
+7929721475,2026-04-28T12:00:06Z,Subaru,Outback,2013,145814.0,7900.0,automatic,4wd,gasoline,4.0,good,black,wagon,clean,7900.0,7362.33
+7929762862,2026-04-28T12:00:06Z,Ford,Ranger,2009,199000.0,1000.0,automatic,rwd,gasoline,4.0,fair,white,truck,clean,1000.0,10435.11
+7929827016,2026-04-28T12:00:06Z,Subaru,Impreza,2012,96628.0,8998.0,manual,awd,gasoline,4.0,good,Gray,sedan,clean,8998.0,6435.2
+7930109014,2026-04-28T12:00:06Z,GMC,Acadia,2023,21787.0,26777.0,automatic,awd,gasoline,4.0,good,Black,suv,clean,26777.0,11715.61
+7929989720,2026-04-28T12:00:06Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7930464523,2026-04-28T12:00:06Z,Audi,Q3,2020,77916.0,17980.0,automatic,awd,gasoline,4.0,,Gray,suv,clean,17980.0,17563.76
+7930308128,2026-04-28T12:00:06Z,Chevrolet,Silverado,2022,98056.0,29900.0,automatic,4wd,gasoline,8.0,like new,white,truck,clean,29900.0,11567.36
+7930465905,2026-04-28T12:00:06Z,Hyundai,Elantra,2017,105189.0,8900.0,automatic,,gasoline,4.0,,Red,sedan,clean,8900.0,10996.05
+7929191300,2026-04-28T13:00:06Z,Honda,Accord,2009,120000.0,5999.0,automatic,fwd,gasoline,4.0,like new,grey,sedan,clean,5999.0,4981.03
+7928319449,2026-04-28T13:00:06Z,Chevrolet,Silverado,2014,200526.0,7999.0,automatic,4wd,gasoline,6.0,good,white,truck,clean,7999.0,6846.9
+7929286909,2026-04-28T13:00:06Z,Chevrolet,Silverado,2011,154000.0,9800.0,automatic,,gasoline,6.0,good,,truck,clean,9800.0,7269.82
+7929292415,2026-04-28T13:00:06Z,BMW,X3,2014,89000.0,8985.0,automatic,4wd,gasoline,4.0,like new,White,suv,clean,8985.0,8654.08
+7929366479,2026-04-28T13:00:06Z,Honda,Civic,2009,149974.0,6995.0,automatic,fwd,gasoline,4.0,good,silver,,clean,6995.0,5803.42
+7929240995,2026-04-28T13:00:06Z,Lincoln,Mark LT,2007,132109.0,7800.0,automatic,rwd,gasoline,,,,truck,clean,7800.0,6329.23
+7929757297,2026-04-28T13:00:06Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7930457591,2026-04-28T13:00:06Z,Honda,HR-V,2019,45808.0,19319.0,automatic,4wd,gasoline,4.0,good,Gray,suv,clean,19319.0,21296.56
+7930464468,2026-04-28T13:00:06Z,Honda,Pilot,2016,120070.0,12990.0,automatic,4wd,gasoline,6.0,,White,suv,clean,12990.0,12239.13
+7930464493,2026-04-28T13:00:06Z,Chevrolet,Tahoe,2011,178907.0,8500.0,automatic,4wd,,8.0,,Red,suv,clean,8500.0,8812.56
+7930183762,2026-04-28T13:00:06Z,Mercedes-Benz,CLS550,2013,97000.0,11885.0,automatic,4wd,gasoline,8.0,like new,red,sedan,clean,11885.0,8069.09
+7930464434,2026-04-28T13:00:06Z,Subaru,Legacy,2010,127030.0,5500.0,automatic,awd,gasoline,4.0,,black,sedan,clean,5500.0,4976.59
+7930464553,2026-04-28T13:00:06Z,Hyundai,Elantra,2023,108905.0,16750.0,automatic,fwd,gasoline,4.0,,Gray,sedan,clean,16750.0,16139.84
+7930678647,2026-04-28T13:00:06Z,Toyota,Sequoia,2006,167781.0,6995.0,automatic,4wd,gasoline,8.0,good,grey,suv,clean,6995.0,11218.06
+7928523069,2026-04-28T14:00:06Z,Toyota,Camry,2012,160899.0,8500.0,automatic,fwd,gasoline,4.0,like new,red,sedan,clean,8500.0,6951.82
+7928082393,2026-04-28T15:00:06Z,Ford,Fusion,2010,109446.0,5200.0,automatic,fwd,gasoline,6.0,good,blue,sedan,clean,5200.0,6001.09
+7929090533,2026-04-28T15:00:06Z,Mitsubishi,Pajero,1995,109900.0,4000.0,automatic,4wd,diesel,4.0,good,white,wagon,clean,4000.0,31173.51
+7929003398,2026-04-28T15:00:06Z,Chevrolet,Cruze,2017,40000.0,9500.0,automatic,fwd,gasoline,4.0,good,silver,sedan,clean,9500.0,8362.88
+7929145497,2026-04-28T15:00:06Z,Volkswagen,Passat,2014,85972.0,7900.0,automatic,fwd,gasoline,4.0,good,grey,sedan,clean,7900.0,8366.22
+7929149261,2026-04-28T15:00:06Z,Hyundai,Elantra,2019,121000.0,7900.0,automatic,fwd,gasoline,4.0,good,grey,sedan,clean,7900.0,9897.26
+7929288571,2026-04-28T15:00:06Z,BMW,X3,2016,124000.0,8985.0,automatic,4wd,gasoline,4.0,like new,White,suv,clean,8985.0,10063.34
+7929151446,2026-04-28T15:00:06Z,Subaru,Crosstrek,2014,124824.0,7900.0,automatic,4wd,gasoline,4.0,good,Grey,wagon,clean,7900.0,10146.33
+7929999620,2026-04-28T15:00:06Z,Honda,CR-V,2011,146000.0,7800.0,automatic,4wd,gasoline,4.0,good,,suv,clean,7800.0,7525.45
+7930054689,2026-04-28T15:00:06Z,Subaru,Forester,2015,132799.0,10998.0,automatic,awd,gasoline,4.0,,Silver,wagon,clean,10998.0,9280.38
+7929668565,2026-04-28T15:00:06Z,Buick,Encore GX,2024,19604.0,23797.0,automatic,awd,gasoline,3.0,good,Black,suv,clean,23797.0,11715.61
+7930091132,2026-04-28T15:00:06Z,Chevrolet,Silverado,2016,90000.0,,automatic,4wd,gasoline,8.0,like new,blue,truck,clean,,2990.26
+7930113979,2026-04-28T15:00:06Z,Mercedes-Benz,GL,2015,124948.0,10950.0,automatic,4wd,gasoline,6.0,good,black,suv,clean,10950.0,10221.17
+7929848486,2026-04-28T15:00:06Z,Subaru,Outback,2022,27514.0,22991.0,automatic,awd,gasoline,4.0,good,black,suv,clean,22991.0,16500.19
+7930330247,2026-04-28T15:00:06Z,Chevrolet,Silverado,2023,32078.0,45870.0,automatic,4wd,gasoline,8.0,good,black,truck,clean,45870.0,25281.57
+7930464233,2026-04-28T15:00:06Z,Toyota,RAV4,2013,125603.0,13885.0,automatic,4wd,gasoline,4.0,,green,suv,clean,13885.0,12714.2
+7930146910,2026-04-28T15:00:06Z,Toyota,Sienna,2022,68752.0,16505.0,automatic,4wd,hybrid,4.0,,Gray,van,clean,16505.0,25734.56
+7930464411,2026-04-28T15:00:06Z,Honda,Element,2009,138876.0,11400.0,automatic,4wd,gasoline,4.0,,red,suv,clean,11400.0,10778.25
+7930686130,2026-04-28T15:00:06Z,Subaru,Outback,2012,130671.0,8998.0,automatic,awd,gasoline,4.0,,Red,wagon,clean,8998.0,6711.8
+7928717739,2026-04-28T16:00:39Z,Ford,Thunderbird,1997,52000.0,6750.0,automatic,,gasoline,8.0,like new,,,clean,6750.0,4730.78
+7927886686,2026-04-28T16:00:39Z,Jeep,Patriot,2016,151000.0,4500.0,automatic,4wd,gasoline,4.0,like new,Red,suv,clean,4500.0,10214.57
+7928927126,2026-04-28T16:00:39Z,Subaru,Forester,2016,142912.0,9998.0,automatic,awd,gasoline,4.0,good,green,wagon,clean,9998.0,10534.93
+7929166247,2026-04-28T16:00:39Z,Jeep,Liberty,2011,115000.0,6488.0,automatic,4wd,gasoline,6.0,like new,silver,suv,clean,6488.0,8892.54
+7929485270,2026-04-28T16:00:39Z,Jeep,Grand Cherokee,2011,190000.0,4700.0,automatic,4wd,gasoline,6.0,like new,White,suv,clean,4700.0,6960.97
+7927877622,2026-04-28T17:00:38Z,Jaguar,XK8,1997,61000.0,6985.0,automatic,rwd,gasoline,8.0,good,red,convertible,clean,6985.0,16270.32
+7928885037,2026-04-28T17:00:38Z,Ford,E150,2001,36000.0,11500.0,automatic,rwd,gasoline,8.0,good,Black,van,clean,11500.0,20697.34
+7928201092,2026-04-28T17:00:38Z,Ford,Mustang,2002,74000.0,16900.0,manual,rwd,gasoline,8.0,like new,blue,convertible,clean,16900.0,12504.2
+7929175459,2026-04-28T17:00:38Z,Chevrolet,Volt,2018,177000.0,4850.0,automatic,fwd,gasoline,4.0,good,white,sedan,clean,4850.0,5406.35
+7929351943,2026-04-28T17:00:38Z,Ram,Promaster,2024,25.0,88993.0,automatic,fwd,gasoline,6.0,new,white,van,clean,88993.0,64220.66
+7929515849,2026-04-28T17:00:38Z,GMC,Acadia,2013,160000.0,7000.0,automatic,4wd,gasoline,6.0,like new,black,sedan,clean,7000.0,5282.62
+7930047083,2026-04-28T17:00:38Z,Hyundai,Sonata,2013,220000.0,3700.0,automatic,fwd,gasoline,4.0,good,blue,sedan,clean,3700.0,-7413.23
+7929510424,2026-04-28T17:00:38Z,BMW,645,2004,59000.0,12500.0,automatic,rwd,gasoline,8.0,like new,black,coupe,clean,12500.0,33358.88
+7930325388,2026-04-28T17:00:38Z,Honda,Pilot,2004,185500.0,2999.0,automatic,4wd,gasoline,6.0,good,grey,suv,clean,2999.0,3630.32
+7930464581,2026-04-28T17:00:38Z,Chevrolet,Silverado,2012,130790.0,14950.0,automatic,4wd,gasoline,8.0,,red,truck,clean,14950.0,15273.91
+7930090834,2026-04-28T17:00:38Z,Tesla,Model Y,2021,61000.0,5000.0,automatic,4wd,electric,6.0,like new,white,wagon,clean,5000.0,5216.88
+7930325527,2026-04-28T17:00:38Z,BMW,I8,2015,26186.0,43800.0,automatic,,hybrid,3.0,,grey,coupe,clean,43800.0,33598.89
+7930435080,2026-04-28T17:00:38Z,Mercedes-Benz,GL450,2011,79000.0,8985.0,automatic,4wd,gasoline,8.0,good,white,suv,clean,8985.0,13623.94
+7930429830,2026-04-28T17:00:38Z,Ford,Transit,2025,87.0,139500.0,automatic,4wd,gasoline,6.0,new,,van,clean,139500.0,63976.89
+7930434432,2026-04-28T17:00:38Z,Subaru,Outback,2014,106997.0,10998.0,automatic,awd,gasoline,4.0,,Tan,wagon,clean,10998.0,9735.52
+7930464606,2026-04-28T17:00:38Z,Mercedes-Benz,GLK-Class,2015,123897.0,8900.0,automatic,rwd,gasoline,6.0,,red,suv,clean,8900.0,9023.64
+7928982857,2026-04-28T18:00:36Z,Honda,Civic,2011,56000.0,3300.0,automatic,fwd,,4.0,like new,white,sedan,clean,3300.0,6339.76
+7929058316,2026-04-28T18:00:36Z,Ford,E350,2018,160000.0,20000.0,automatic,,gasoline,10.0,good,white,van,clean,20000.0,15233.4
+7929151120,2026-04-28T18:00:36Z,Ford,Fiesta,2016,88133.0,5900.0,automatic,fwd,gasoline,4.0,like new,White,sedan,clean,5900.0,5070.99
+7929192988,2026-04-28T18:00:36Z,BMW,3 Series,2011,270000.0,5500.0,automatic,fwd,gasoline,8.0,fair,grey,coupe,clean,5500.0,23644.23
+7929148959,2026-04-28T18:00:36Z,Infiniti,Ex35,2013,89281.0,8900.0,automatic,4wd,gasoline,6.0,like new,grey,suv,clean,8900.0,9161.48
+7929479364,2026-04-28T18:00:36Z,GMC,Sierra,2015,177000.0,5800.0,automatic,fwd,gasoline,8.0,good,white,truck,clean,5800.0,28178.49
+7929596984,2026-04-28T18:00:36Z,Toyota,Camry,1999,167845.0,3995.0,automatic,fwd,gasoline,4.0,good,white,,clean,3995.0,2892.23
+7929876044,2026-04-28T18:00:36Z,Ford,F350,2002,220000.0,7900.0,automatic,,diesel,,good,,truck,clean,7900.0,18135.28
+7928977431,2026-04-28T20:00:42Z,Jeep,Liberty,2005,99000.0,3750.0,automatic,4wd,gasoline,6.0,,,suv,clean,3750.0,9118.74
+7929182155,2026-04-28T20:00:42Z,Chevrolet,Colorado,2019,101000.0,10900.0,automatic,rwd,gasoline,4.0,good,,truck,clean,10900.0,11110.6
+7927889382,2026-04-28T20:00:42Z,Saab,9-2X,2006,140000.0,4900.0,manual,4wd,gasoline,4.0,good,grey,hatchback,clean,4900.0,5753.73
+7928584805,2026-04-28T21:00:06Z,Volvo,S60,2006,115000.0,3750.0,automatic,4wd,gasoline,5.0,good,Silver,sedan,clean,3750.0,8097.4
+7927910615,2026-04-28T22:00:40Z,Jeep,Grand Cherokee,2020,97000.0,23500.0,automatic,4wd,gasoline,8.0,like new,white,suv,clean,23500.0,9814.53
+7927868905,2026-04-28T22:00:40Z,Jeep,Wrangler,2014,163000.0,7900.0,manual,4wd,gasoline,6.0,good,Silver,suv,clean,7900.0,5113.25
+7927941966,2026-04-28T22:00:40Z,Chevrolet,Chevelle,1966,59985.0,69500.0,automatic,,gasoline,,,Grey,coupe,clean,69500.0,50810.34
+7928526450,2026-04-28T22:00:40Z,Chevrolet,Silverado,2018,149053.0,25900.0,automatic,4wd,diesel,8.0,like new,white,truck,clean,25900.0,34118.67
+7929190886,2026-04-28T22:00:40Z,Audi,A4 Allroad,2014,141400.0,8995.0,automatic,4wd,gasoline,4.0,like new,Black,suv,clean,8995.0,11909.42
+7929149093,2026-04-28T22:00:40Z,Hyundai,Sonata,2014,118290.0,7900.0,automatic,fwd,gasoline,4.0,good,white,sedan,clean,7900.0,8033.83
+7929154014,2026-04-28T22:00:40Z,Kia,Sedona,2015,120000.0,5700.0,automatic,fwd,gasoline,6.0,like new,Gold,van,clean,5700.0,16760.94
+7929155688,2026-04-28T22:00:40Z,Honda,Civic,2015,156884.0,8995.0,automatic,fwd,gasoline,4.0,good,Silver,,clean,8995.0,8620.61
+7929745175,2026-04-28T22:00:40Z,Honda,CR-V,2010,146000.0,7800.0,automatic,awd,gasoline,4.0,like new,,suv,clean,7800.0,5738.06
+7929967112,2026-04-28T22:00:40Z,Subaru,Outback,2006,200000.0,3000.0,automatic,4wd,gasoline,4.0,like new,silver,wagon,clean,3000.0,10208.53
+7929995522,2026-04-28T22:00:40Z,BMW,328i,2007,177000.0,3000.0,automatic,rwd,gasoline,,good,black,sedan,clean,3000.0,4005.15
+7929723763,2026-04-28T22:00:40Z,GMC,Sierra,2020,42794.0,39997.0,automatic,4wd,diesel,6.0,good,Gray,truck,clean,39997.0,41669.16
+7930076819,2026-04-28T22:00:40Z,Subaru,Forester,2017,157287.0,8900.0,automatic,4wd,gasoline,4.0,like new,black,suv,clean,8900.0,9762.22
+7929487509,2026-04-28T22:00:40Z,Chevrolet,Malibu,2006,121230.0,2800.0,automatic,fwd,gasoline,6.0,good,red,sedan,clean,2800.0,4487.39
+7930071844,2026-04-28T22:00:40Z,GMC,Yukon,2023,37237.0,53357.0,automatic,4wd,gasoline,8.0,good,white,suv,clean,53357.0,25517.03
+7930259503,2026-04-28T22:00:40Z,GMC,Savana,2019,100000.0,16800.0,automatic,,gasoline,8.0,good,,van,clean,16800.0,20164.03
+7929496984,2026-04-28T22:00:40Z,BMW,Z3,1999,103044.0,15900.0,manual,rwd,gasoline,6.0,like new,black,convertible,clean,15900.0,9638.21
+7930047015,2026-04-28T22:00:40Z,Chevrolet,Camaro,1997,130000.0,13900.0,automatic,rwd,gasoline,8.0,good,black,coupe,clean,13900.0,31123.99
+7930464174,2026-04-28T22:00:40Z,Nissan,Rogue,2019,143504.0,10990.0,automatic,4wd,gasoline,4.0,,black,suv,clean,10990.0,11190.93
+7930464303,2026-04-28T22:00:40Z,Jeep,Grand Cherokee,2017,119911.0,14900.0,automatic,4wd,gasoline,6.0,,blue,suv,clean,14900.0,13321.84
+7930544011,2026-04-28T22:00:40Z,Volvo,V70,2005,198000.0,2500.0,automatic,fwd,gasoline,5.0,like new,blue,wagon,clean,2500.0,13339.84
+7930585164,2026-04-28T22:00:40Z,Acura,MDX,2012,179000.0,7900.0,automatic,awd,gasoline,6.0,like new,,suv,clean,7900.0,4390.15
+7930200128,2026-04-28T22:00:40Z,MG,Roadster,1977,76000.0,8500.0,manual,rwd,gasoline,4.0,good,Red,convertible,clean,8500.0,13661.95
+7930464209,2026-04-28T22:00:40Z,Chevrolet,Cobalt,2010,123272.0,4980.0,automatic,,gasoline,4.0,good,blue,sedan,clean,4980.0,5547.55
+7930464779,2026-04-28T22:00:40Z,Land Rover,Range Rover,2018,101615.0,25900.0,automatic,awd,gasoline,8.0,,black,suv,clean,25900.0,28451.86
+7930464758,2026-04-28T22:00:40Z,Infiniti,Q50,2018,139096.0,14850.0,automatic,4wd,gasoline,6.0,,white,sedan,clean,14850.0,14150.56
+7930552361,2026-04-28T22:00:40Z,GMC,Envoy,2006,151000.0,3900.0,automatic,4wd,gasoline,6.0,like new,silver,suv,clean,3900.0,6512.07
+7930464324,2026-04-28T22:00:40Z,Ram,3500,2016,142654.0,29900.0,automatic,4wd,gasoline,8.0,,Silver,,clean,29900.0,19779.8
+7930464686,2026-04-28T22:00:40Z,Mercedes-Benz,CLK-Class,1999,39501.0,11500.0,automatic,rwd,gasoline,6.0,,Silver,convertible,clean,11500.0,11245.7
+7930620074,2026-04-28T22:00:40Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7928865791,2026-04-28T23:00:06Z,Chevrolet,El Camino,1985,59000.0,25500.0,automatic,rwd,gasoline,8.0,like new,black,coupe,clean,25500.0,37516.58
+7928231853,2026-04-28T23:00:06Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7928764166,2026-04-28T23:00:06Z,Mercedes-Benz,Slk,2001,21000.0,14000.0,manual,rwd,gasoline,6.0,like new,red,convertible,clean,14000.0,11821.17
+7929189587,2026-04-28T23:00:06Z,Chevrolet,Malibu,2011,165000.0,2950.0,automatic,fwd,gasoline,4.0,good,silver,sedan,clean,2950.0,4259.23
+7929782270,2026-04-28T23:00:06Z,Hyundai,Kona,2019,145143.0,8975.0,automatic,4wd,gasoline,,,Gray,suv,clean,8975.0,11768.29
+7929899927,2026-04-28T23:00:06Z,Chevrolet,Silverado,2016,90000.0,2000.0,automatic,4wd,gasoline,8.0,like new,blue,truck,clean,2000.0,2990.26
+7930083881,2026-04-28T23:00:06Z,GMC,Canyon,2007,88800.0,6005.0,automatic,rwd,gasoline,5.0,,Red,truck,clean,6005.0,8519.88
+7930054670,2026-04-28T23:00:06Z,Subaru,Forester,2014,97688.0,10998.0,manual,awd,gasoline,4.0,,Tan,wagon,clean,10998.0,8529.46
+7930090642,2026-04-28T23:00:06Z,Toyota,Camry,2018,33000.0,2000.0,automatic,fwd,gasoline,6.0,like new,white,sedan,clean,2000.0,2297.45
+7930104630,2026-04-28T23:00:06Z,Toyota,Venza,2014,154941.0,8900.0,automatic,awd,gasoline,4.0,like new,black,suv,clean,8900.0,8950.04
+7930173303,2026-04-28T23:00:06Z,Toyota,Camry,2009,170000.0,4500.0,automatic,,gasoline,4.0,good,,sedan,clean,4500.0,6596.17
+7929826640,2026-04-28T23:00:06Z,,,2017,100000.0,1000.0,automatic,,gasoline,,,,,clean,1000.0,7480.94
+7929697771,2026-04-28T23:00:06Z,BMW,M3,2025,15503.0,82788.0,manual,rwd,gasoline,6.0,good,grey,sedan,clean,82788.0,19650.61
+7929782558,2026-04-28T23:00:06Z,Ford,Fusion,2020,35125.0,14850.0,automatic,fwd,gasoline,4.0,,blue,sedan,clean,14850.0,12065.63
+7929980515,2026-04-28T23:00:06Z,Audi,Q3,2016,150000.0,7900.0,automatic,awd,gasoline,4.0,good,,suv,clean,7900.0,9974.24
+7930091094,2026-04-28T23:00:06Z,Honda,Accord,2020,20000.0,2000.0,automatic,4wd,gasoline,8.0,like new,blue,sedan,clean,2000.0,935.17
+7928470860,2026-04-29T00:00:49Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7928525343,2026-04-29T00:00:49Z,Toyota,Sienna,2015,159707.0,12900.0,automatic,fwd,gasoline,6.0,like new,red,van,clean,12900.0,16963.4
+7928744823,2026-04-29T00:00:49Z,Chrysler,Pacifica,2023,20228.0,68993.0,automatic,fwd,gasoline,6.0,like new,blue,van,clean,68993.0,24314.79
+7927941456,2026-04-29T00:00:49Z,Ford,Econoline Cargo Van,2014,91374.0,12300.0,automatic,fwd,gasoline,8.0,,white,van,clean,12300.0,22874.98
+7929101984,2026-04-29T00:00:49Z,Mercedes-Benz,ML350,2007,173000.0,7999.0,automatic,4wd,gasoline,6.0,good,blue,suv,clean,7999.0,6012.5
+7928864120,2026-04-29T00:00:49Z,Chevrolet,C3500,1999,240000.0,7000.0,automatic,rwd,gasoline,8.0,good,grey,truck,clean,7000.0,12108.7
+7928700380,2026-04-29T00:00:49Z,Ford,Ranger,2005,142350.0,8000.0,manual,4wd,gasoline,6.0,good,red,truck,clean,8000.0,6774.58
+7928833009,2026-04-29T00:00:49Z,Nissan,Rogue,2016,169500.0,6495.0,automatic,4wd,gasoline,4.0,good,grey,suv,clean,6495.0,8400.44
+7929084823,2026-04-29T00:00:49Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7928025034,2026-04-29T01:00:44Z,Chevrolet,C3500,1999,240000.0,7000.0,automatic,rwd,gasoline,8.0,good,grey,truck,clean,7000.0,12108.7
+7928044037,2026-04-29T01:00:44Z,Chevrolet,Silverado,2023,53400.0,41500.0,automatic,4wd,gasoline,8.0,like new,red,truck,clean,41500.0,12261.29
+7928952033,2026-04-29T01:00:44Z,Pontiac,Firebird Trans Am,1991,96000.0,9000.0,automatic,rwd,gasoline,8.0,fair,green,hatchback,clean,9000.0,20540.89
+7928522388,2026-04-29T01:00:44Z,Subaru,Forester,2015,150818.0,6900.0,automatic,4wd,gasoline,4.0,like new,silver,suv,clean,6900.0,9522.04
+7928730478,2026-04-29T01:00:44Z,Mercedes-Benz,GLE,2019,74648.0,47500.0,automatic,awd,gasoline,6.0,like new,black,coupe,clean,47500.0,29897.58
+7928723431,2026-04-29T01:00:44Z,Honda,Civic,2009,143686.0,7295.0,automatic,fwd,gasoline,4.0,good,Black,coupe,clean,7295.0,29633.81
+7928122794,2026-04-29T01:00:44Z,Toyota,Camry,2022,71200.0,21500.0,automatic,fwd,gasoline,4.0,good,grey,sedan,clean,21500.0,15367.81
+7928908242,2026-04-29T01:00:44Z,GMC,Savana,2009,167173.0,6495.0,automatic,rwd,gasoline,8.0,good,Black,van,clean,6495.0,27342.4
+7929107732,2026-04-29T01:00:44Z,Cadillac,CTS,2009,102738.0,7500.0,automatic,awd,gasoline,6.0,like new,,sedan,clean,7500.0,4762.53
+7928527537,2026-04-29T01:00:44Z,Subaru,Crosstrek,2018,124927.0,11900.0,automatic,4wd,gasoline,4.0,like new,orange,hatchback,clean,11900.0,10633.91
+7929098512,2026-04-29T01:00:44Z,Hyundai,Santa Fe,2013,180000.0,6500.0,automatic,4wd,gasoline,4.0,like new,blue,sedan,clean,6500.0,4529.19
+7929147675,2026-04-29T01:00:44Z,Subaru,Legacy,2017,124781.0,10998.0,automatic,awd,gasoline,4.0,,White,sedan,clean,10998.0,8830.44
+7928731237,2026-04-29T01:00:44Z,Volvo,XC70,2011,169444.0,5400.0,automatic,4wd,gasoline,6.0,like new,,wagon,clean,5400.0,5626.11
+7928815343,2026-04-29T01:00:44Z,Lincoln,MKT,2017,190964.0,14900.0,automatic,4wd,gasoline,6.0,good,black,suv,clean,14900.0,12403.29
+7929113126,2026-04-29T01:00:44Z,Subaru,Forester,2010,246000.0,2100.0,automatic,fwd,gasoline,4.0,good,black,suv,clean,2100.0,-1800.55
+7929165285,2026-04-29T01:00:44Z,Honda,CR-V,2011,151000.0,7995.0,automatic,4wd,gasoline,4.0,like new,grey,suv,clean,7995.0,7315.66
+7929149540,2026-04-29T01:00:44Z,Jeep,Cherokee,2015,81802.0,7900.0,automatic,4wd,gasoline,6.0,like new,blue,suv,clean,7900.0,10597.5
+7929506532,2026-04-29T01:00:44Z,Ford,Escape,2014,174000.0,3900.0,automatic,4wd,gasoline,4.0,good,grey,suv,clean,3900.0,4370.71
+7929611533,2026-04-29T01:00:44Z,Honda,Crv,2004,200000.0,2300.0,automatic,,gasoline,,good,,suv,clean,2300.0,8616.29
+7929860937,2026-04-29T01:00:44Z,Ram,5500,2017,137000.0,89995.0,automatic,rwd,diesel,6.0,like new,white,truck,clean,89995.0,35643.62
+7929827036,2026-04-29T01:00:44Z,Subaru,Forester,2015,125150.0,9998.0,automatic,awd,gasoline,4.0,good,Blue,wagon,clean,9998.0,8851.04
+7930184850,2026-04-29T01:00:44Z,Ford,Mustang,2000,197000.0,3900.0,manual,rwd,gasoline,6.0,good,black,convertible,clean,3900.0,9508.13
+7929890332,2026-04-29T01:00:44Z,Buick,Envision,2022,15472.0,22795.0,automatic,fwd,gasoline,4.0,good,Black,suv,clean,22795.0,17817.54
+7929998859,2026-04-29T01:00:44Z,Ford,Fusion,2012,160000.0,3600.0,automatic,fwd,gasoline,4.0,good,black,sedan,clean,3600.0,3909.85
+7929938227,2026-04-29T01:00:44Z,Maserati,Quattroporte,2020,39853.0,36900.0,automatic,4wd,gasoline,6.0,like new,blue,sedan,clean,36900.0,8123.86
+7930464385,2026-04-29T01:00:44Z,Chevrolet,Impala,1995,117258.0,9900.0,automatic,,gasoline,8.0,,black,sedan,clean,9900.0,9757.59
+7930465816,2026-04-29T01:00:44Z,BMW,X1,2018,86540.0,13500.0,automatic,fwd,gasoline,4.0,good,white,suv,clean,13500.0,12381.94
+7930566802,2026-04-29T01:00:44Z,Chrysler,Newport,1969,60000.0,16500.0,automatic,rwd,gasoline,8.0,good,blue,sedan,clean,16500.0,15100.19
+7930287649,2026-04-29T01:00:44Z,Hyundai,Sonata,2009,162000.0,2900.0,automatic,,gasoline,6.0,good,,,clean,2900.0,4153.56
+7930504909,2026-04-29T01:00:44Z,Kia,Sedona,2012,104000.0,5000.0,automatic,fwd,gasoline,6.0,good,black,van,clean,5000.0,15239.55
+7930067997,2026-04-29T01:00:44Z,Subaru,Forester,2018,155812.0,9900.0,automatic,awd,gasoline,4.0,like new,Bronze,suv,clean,9900.0,8163.24
+7930464248,2026-04-29T01:00:44Z,Honda,Accord,2009,167283.0,6250.0,automatic,,gasoline,4.0,,Gray,sedan,clean,6250.0,6640.14
+7930464800,2026-04-29T01:00:44Z,Lexus,GS,2006,131986.0,8900.0,automatic,4wd,gasoline,6.0,,silver,sedan,clean,8900.0,7745.32
+7930465932,2026-04-29T01:00:44Z,Mercedes-Benz,S-Class,2014,83873.0,20900.0,automatic,awd,gasoline,8.0,,gray,sedan,clean,20900.0,19570.86
+7930464636,2026-04-29T01:00:44Z,Chevrolet,Silverado,2012,67592.0,14850.0,automatic,4wd,gasoline,8.0,,blue,truck,clean,14850.0,14801.67
+7930618675,2026-04-29T01:00:44Z,Mazda,MX-5 Miata,2011,42984.0,10750.0,manual,rwd,gasoline,4.0,good,Silver,convertible,rebuilt,10750.0,11029.79
+7930553529,2026-04-29T01:00:44Z,GMC,Acadia,2023,36595.0,25197.0,automatic,awd,gasoline,4.0,good,Black,suv,clean,25197.0,19469.97
+7930505544,2026-04-29T01:00:44Z,GMC,Sierra 1500,2013,170000.0,10885.0,automatic,4wd,gasoline,8.0,good,Blue,truck,clean,10885.0,14670.59
+7930582500,2026-04-29T01:00:44Z,Toyota,Land Cruiser,2001,273000.0,3600.0,automatic,4wd,gasoline,8.0,fair,,suv,clean,3600.0,7154.12
+7930806044,2026-04-29T01:00:44Z,Jaguar,XJS,1995,83000.0,14900.0,automatic,rwd,gasoline,12.0,good,white,convertible,clean,14900.0,16689.87
+7930834572,2026-04-29T01:00:44Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7927942338,2026-04-29T02:00:21Z,Pontiac,Trans Am,1977,64877.0,59500.0,manual,,gasoline,8.0,,black,coupe,clean,59500.0,37528.77
+7928293700,2026-04-29T02:00:21Z,Subaru,XV Crosstrek,2013,110054.0,10998.0,automatic,awd,gasoline,4.0,,Gray,wagon,clean,10998.0,11109.57
+7928293714,2026-04-29T02:00:21Z,Subaru,Forester,2016,172843.0,9499.0,automatic,awd,gasoline,4.0,,black,wagon,clean,9499.0,8591.44
+7928522771,2026-04-29T02:00:21Z,Subaru,Crosstrek,2018,188779.0,6900.0,automatic,awd,gasoline,4.0,like new,black,hatchback,clean,6900.0,8616.0
+7928523469,2026-04-29T02:00:21Z,Mercedes-Benz,E350,2013,148609.0,9900.0,automatic,awd,gasoline,6.0,like new,black,wagon,clean,9900.0,7014.44
+7928317228,2026-04-29T02:00:21Z,Chevrolet,City Express,2017,122761.0,7499.0,automatic,fwd,gasoline,4.0,good,white,van,clean,7499.0,16509.16
+7927942225,2026-04-29T02:00:21Z,Audi,A4,2019,73327.0,15900.0,automatic,,gasoline,4.0,good,Black,sedan,clean,15900.0,11361.88
+7928537369,2026-04-29T02:00:21Z,Chevrolet,Suburban,2016,98804.0,8500.0,automatic,4wd,gasoline,8.0,like new,,suv,clean,8500.0,4097.66
+7927942030,2026-04-29T02:00:21Z,GMC,Yukon XL,2018,153518.0,15990.0,automatic,4wd,gasoline,8.0,,white,suv,clean,15990.0,14517.97
+7928908277,2026-04-29T02:00:21Z,GMC,Sierra,2013,119925.0,12495.0,automatic,4wd,gasoline,8.0,good,silver,truck,clean,12495.0,16024.11
+7928815707,2026-04-29T02:00:21Z,Chevrolet,Avalanche,2004,180988.0,7000.0,automatic,4wd,gasoline,8.0,good,white,truck,clean,7000.0,9570.69
+7928019153,2026-04-29T02:00:21Z,Chevrolet,Cobalt,2009,140000.0,3000.0,automatic,,gasoline,,,,,clean,3000.0,7921.39
+7928525223,2026-04-29T02:00:21Z,Lexus,RX 350L,2019,149541.0,20900.0,automatic,awd,gasoline,6.0,like new,white,suv,clean,20900.0,8679.47
+7928523950,2026-04-29T02:00:21Z,Subaru,Forester,2023,113437.0,19900.0,automatic,awd,gasoline,4.0,like new,black,suv,clean,19900.0,14255.63
+7928524278,2026-04-29T03:00:26Z,Subaru,Outback,2015,179079.0,7400.0,automatic,4wd,gasoline,6.0,like new,black,wagon,clean,7400.0,8083.43
+7928839362,2026-04-29T03:00:26Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7928910037,2026-04-29T03:00:26Z,Honda,Odyssey,2008,130579.0,5495.0,automatic,fwd,gasoline,6.0,good,grey,minivan,clean,5495.0,6287.61
+7928994128,2026-04-29T03:00:26Z,GMC,Yukon,2014,180000.0,6950.0,automatic,4wd,gasoline,8.0,,,suv,clean,6950.0,11093.47
+7927950554,2026-04-29T03:00:26Z,Chrysler,Town & Country,2015,51345.0,28900.0,automatic,fwd,gasoline,6.0,,White,van,clean,28900.0,15380.92
+7928490407,2026-04-29T03:00:26Z,Ford,E-350,2012,198600.0,10000.0,automatic,rwd,gasoline,8.0,good,black,van,clean,10000.0,22312.76
+7928525965,2026-04-29T03:00:26Z,Subaru,Crosstrek,2019,114950.0,13900.0,automatic,awd,gasoline,4.0,like new,blue,hatchback,clean,13900.0,9127.33
+7928667282,2026-04-29T03:00:26Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,3288.0,3040.82
+7927944409,2026-04-29T03:00:26Z,Hyundai,Tucson,2013,135014.0,8990.0,automatic,4wd,gasoline,4.0,,Blue,suv,clean,8990.0,9812.89
+7928008565,2026-04-29T03:00:26Z,Hyundai,Santa Fe,2010,150000.0,5500.0,automatic,4wd,gasoline,4.0,good,,suv,clean,5500.0,5120.68
+7928429713,2026-04-29T03:00:26Z,Chevrolet,Silverado,2013,156467.0,6800.0,automatic,4wd,gasoline,8.0,good,white,truck,clean,6800.0,16004.54
+7928817198,2026-04-29T03:00:26Z,AMC,Rambler Classic,1963,57290.0,7000.0,manual,rwd,gasoline,6.0,good,yellow,sedan,clean,7000.0,19188.89
+7928927176,2026-04-29T03:00:26Z,Subaru,Legacy,2016,128238.0,10998.0,automatic,awd,gasoline,4.0,,Gray,sedan,clean,10998.0,11699.26
+7927941897,2026-04-29T03:00:26Z,Chevrolet,Colorado,2018,167341.0,12850.0,automatic,4wd,gasoline,6.0,,Black,truck,clean,12850.0,10433.87
+7927942256,2026-04-29T03:00:26Z,Ford,Fusion,2015,92276.0,10850.0,automatic,awd,gasoline,4.0,,Black,sedan,clean,10850.0,8011.03
+7929021911,2026-04-29T03:00:26Z,Ford,E-350 Step Van,2016,10862.0,38880.0,automatic,rwd,gasoline,10.0,good,White,van,clean,38880.0,35597.43
+7928524015,2026-04-29T03:00:26Z,Subaru,Forester,2016,113532.0,11998.0,automatic,awd,gasoline,4.0,good,white,wagon,clean,11998.0,11334.37
+7929027189,2026-04-29T03:00:26Z,Dodge,Ram,2003,145000.0,1.0,automatic,4wd,gasoline,8.0,good,black,truck,clean,1.0,11934.6
+7929149426,2026-04-29T03:00:26Z,Kia,Soul,2014,123296.0,5900.0,automatic,fwd,gasoline,4.0,like new,white,wagon,clean,5900.0,7747.97
+7929149024,2026-04-29T03:00:26Z,Hyundai,Elantra,2012,138892.0,4900.0,automatic,fwd,gasoline,4.0,good,White,sedan,clean,4900.0,3913.64
+7929414179,2026-04-29T03:00:26Z,Jeep,Grand Cherokee,2011,150000.0,4000.0,automatic,4wd,gasoline,8.0,good,grey,suv,clean,4000.0,9174.03
+7929533725,2026-04-29T03:00:26Z,Chevrolet,Cobalt,2009,140000.0,3000.0,automatic,,gasoline,,,,,clean,3000.0,7921.39
+7929698623,2026-04-29T03:00:26Z,Toyota,Prius,2008,122000.0,5500.0,automatic,,hybrid,4.0,,,hatchback,clean,5500.0,8922.19
+7929188433,2026-04-29T03:00:26Z,BMW,750Li,2014,114000.0,6795.0,automatic,4wd,gasoline,8.0,good,black,sedan,rebuilt,6795.0,15277.86
+7929656941,2026-04-29T03:00:26Z,Ford,Explorer,2012,106000.0,9995.0,automatic,4wd,gasoline,6.0,like new,silver,suv,clean,9995.0,8096.49
+7929782317,2026-04-29T03:00:26Z,Toyota,Camry,2010,189225.0,5500.0,automatic,fwd,gasoline,4.0,,White,sedan,clean,5500.0,5625.63
+7929782519,2026-04-29T03:00:26Z,Land Rover,Range Rover Sport,2017,95262.0,16900.0,automatic,,gasoline,6.0,good,black,suv,clean,16900.0,17325.81
+7929970578,2026-04-29T03:00:26Z,BMW,320i,2017,114000.0,8100.0,automatic,4wd,gasoline,4.0,like new,,sedan,clean,8100.0,8712.31
+7930043364,2026-04-29T03:00:26Z,Jeep,Wrangler,2015,37500.0,14200.0,automatic,awd,gasoline,6.0,like new,,suv,clean,14200.0,14931.54
+7930265507,2026-04-29T03:00:26Z,Ford,Bronco,2024,7142.0,74997.0,automatic,4wd,gasoline,6.0,good,black,suv,clean,74997.0,-2729.7
+7930090796,2026-04-29T03:00:26Z,Toyota,Camry,2018,33000.0,,automatic,fwd,gasoline,6.0,like new,white,sedan,clean,,2297.45
+7930178925,2026-04-29T03:00:26Z,Honda,Fit,2009,59000.0,8885.0,automatic,fwd,gasoline,4.0,good,grey,hatchback,clean,8885.0,7796.07
+7930296088,2026-04-29T03:00:26Z,GMC,Canyon,2026,4020.0,38997.0,automatic,rwd,gasoline,4.0,good,Black,truck,clean,38997.0,16673.39
+7929881011,2026-04-29T03:00:26Z,Tesla,Model Y,2021,61000.0,5000.0,automatic,4wd,electric,6.0,like new,white,wagon,clean,5000.0,5216.88
+7930276897,2026-04-29T03:00:26Z,Honda,Passport,2019,170000.0,12400.0,automatic,4wd,gasoline,6.0,good,Black,suv,clean,12400.0,9827.83
+7930306172,2026-04-29T03:00:26Z,Toyota,Tacoma,2017,118850.0,26900.0,automatic,4wd,gasoline,6.0,like new,orange,truck,clean,26900.0,17828.96
+7929999688,2026-04-29T03:00:26Z,Honda,Accord,2009,189000.0,4799.0,automatic,fwd,gasoline,6.0,like new,silver,sedan,clean,4799.0,5388.52
+7930390453,2026-04-29T03:00:26Z,Toyota,Camry,2009,72000.0,9000.0,automatic,fwd,gasoline,4.0,good,grey,sedan,clean,9000.0,8920.44
+7930429068,2026-04-29T03:00:26Z,Jeep,Grand Cherokee,2005,254750.0,1200.0,automatic,4wd,gasoline,8.0,fair,blue,suv,clean,1200.0,10359.97
+7930431204,2026-04-29T03:00:26Z,Volvo,262C Bertone,1978,100000.0,6500.0,manual,,gasoline,4.0,,Silver,coupe,clean,6500.0,32298.54
+7930456937,2026-04-29T03:00:26Z,Honda,Civic,2008,141000.0,4800.0,automatic,fwd,gasoline,4.0,like new,Grey,sedan,clean,4800.0,7145.05
