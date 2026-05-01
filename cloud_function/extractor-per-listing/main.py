@@ -30,7 +30,10 @@ RUN_ID_PLAIN_RE = re.compile(r"^\d{14}$")        # 20251026170002
 
 READ_RETRY = gax_retry.Retry(
     predicate=gax_retry.if_transient_error,
-    initial=1.0, maximum=10.0, multiplier=2.0, deadline=120.0
+    initial=1.0,
+    maximum=10.0,
+    multiplier=2.0,
+    deadline=120.0
 )
 
 storage_client = storage.Client()
@@ -39,6 +42,7 @@ storage_client = storage.Client()
 PRICE_RE      = re.compile(r"\$\s?([0-9,]+)")
 YEAR_RE       = re.compile(r"\b(19|20)\d{2}\b")
 MAKE_MODEL_RE = re.compile(r"\b([A-Z][a-z]+)\s+([A-Z][A-Za-z0-9]+)")
+IMAGE_URL_RE  = re.compile(r"https://images\.craigslist\.org/[^\s\"'<>]+", re.I)
 
 # -------------------- HELPERS --------------------
 def _list_run_ids(bucket: str, scrapes_prefix: str) -> list[str]:
@@ -59,34 +63,45 @@ def _list_run_ids(bucket: str, scrapes_prefix: str) -> list[str]:
         cand = tail.split("run_id=", 1)[1] if tail.startswith("run_id=") else tail
         if RUN_ID_ISO_RE.match(cand) or RUN_ID_PLAIN_RE.match(cand):
             run_ids.append(cand)
+
     return sorted(run_ids)
+
 
 def _txt_objects_for_run(run_id: str) -> list[str]:
     """
     Return .txt object names for a given run_id.
-    Tries (in order) and returns the first non-empty list:
+    Tries in order and returns the first non-empty list:
       scrapes/run_id=<run_id>/txt/
       scrapes/run_id=<run_id>/
       scrapes/<run_id>/txt/
       scrapes/<run_id>/
     """
     bucket = storage_client.bucket(BUCKET_NAME)
+
     candidates = [
         f"{SCRAPES_PREFIX}/run_id={run_id}/txt/",
         f"{SCRAPES_PREFIX}/run_id={run_id}/",
         f"{SCRAPES_PREFIX}/{run_id}/txt/",
         f"{SCRAPES_PREFIX}/{run_id}/",
     ]
+
     for pref in candidates:
-        names = [b.name for b in bucket.list_blobs(prefix=pref) if b.name.endswith(".txt")]
+        names = [
+            b.name
+            for b in bucket.list_blobs(prefix=pref)
+            if b.name.endswith(".txt")
+        ]
         if names:
             return names
+
     return []
+
 
 def _download_text(blob_name: str) -> str:
     bucket = storage_client.bucket(BUCKET_NAME)
     blob = bucket.blob(blob_name)
     return blob.download_as_text(retry=READ_RETRY, timeout=120)
+
 
 def _upload_jsonl_line(blob_name: str, record: dict):
     bucket = storage_client.bucket(BUCKET_NAME)
@@ -94,8 +109,9 @@ def _upload_jsonl_line(blob_name: str, record: dict):
     line = json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n"
     blob.upload_from_string(line, content_type="application/x-ndjson")
 
+
 def _parse_run_id_as_iso(run_id: str) -> str:
-    """Normalize either run_id style to ISO8601 Z (fallback = now UTC)."""
+    """Normalize either run_id style to ISO8601 Z. Fallback is current UTC time."""
     try:
         if RUN_ID_ISO_RE.match(run_id):
             dt = datetime.strptime(run_id, "%Y%m%dT%H%M%SZ").replace(tzinfo=timezone.utc)
@@ -103,14 +119,18 @@ def _parse_run_id_as_iso(run_id: str) -> str:
             dt = datetime.strptime(run_id, "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc)
         else:
             raise ValueError("unsupported run_id")
+
         return dt.isoformat().replace("+00:00", "Z")
+
     except Exception:
         return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
 
 # -------------------- PARSE A LISTING --------------------
 def parse_listing(text: str) -> dict:
     d = {}
 
+    # Price
     m = PRICE_RE.search(text)
     if m:
         try:
@@ -118,6 +138,7 @@ def parse_listing(text: str) -> dict:
         except ValueError:
             pass
 
+    # Year
     y = YEAR_RE.search(text)
     if y:
         try:
@@ -125,38 +146,49 @@ def parse_listing(text: str) -> dict:
         except ValueError:
             pass
 
+    # Make and model
     mm = MAKE_MODEL_RE.search(text)
     if mm:
         d["make"] = mm.group(1)
         d["model"] = mm.group(2)
 
-    # mileage variants
+    # Mileage variants
     mi = None
+
     m1 = re.search(r"(?:mileage|odometer)\s*[:\-]?\s*([\d,]+)", text, re.I)
     if m1:
-        try: mi = int(m1.group(1).replace(",", ""))
-        except ValueError: mi = None
+        try:
+            mi = int(m1.group(1).replace(",", ""))
+        except ValueError:
+            mi = None
+
     if mi is None:
         m2 = re.search(r"(\d+(?:\.\d+)?)\s*k\s*(?:mi|mile|miles)\b", text, re.I)
         if m2:
-            try: mi = int(float(m2.group(1)) * 1000)
-            except ValueError: mi = None
+            try:
+                mi = int(float(m2.group(1)) * 1000)
+            except ValueError:
+                mi = None
+
     if mi is None:
         m3 = re.search(r"(\d{1,3}(?:[,\d]{3})*)\s*(?:mi|mile|miles)\b", text, re.I)
         if m3:
-            try: mi = int(re.sub(r"[^\d]", "", m3.group(1)))
-            except ValueError: mi = None
+            try:
+                mi = int(re.sub(r"[^\d]", "", m3.group(1)))
+            except ValueError:
+                mi = None
+
     if mi is not None:
         d["mileage"] = mi
-    
-    #transmission(A06)
+
+    # Transmission
     t = re.search(r"\b(automatic|auto|manual|cvt|stick\s?shift)\b", text, re.I)
     if t:
         raw = t.group(1).lower()
-        d["transmission"] = "automatic" if raw in ["automatic", "auto", "cvt", "cvT"] else "manual"
-    
-    #fuel type(A06)
-    f = re.search(r'\b(gas|gasoline|diesel|electric|ev|hybrid)\b', text, re.I)
+        d["transmission"] = "automatic" if raw in ["automatic", "auto", "cvt"] else "manual"
+
+    # Fuel type
+    f = re.search(r"\b(gas|gasoline|diesel|electric|ev|hybrid)\b", text, re.I)
     if f:
         raw = f.group(1).lower()
         if raw in ["gas", "gasoline"]:
@@ -168,9 +200,13 @@ def parse_listing(text: str) -> dict:
         elif raw == "hybrid":
             d["fuel_type"] = "hybrid"
 
-    #Drivetrain(A06)
-    dr = re.search(r'\b(4wd|awd|fwd|rwd|four\s?wheel\s?drive|rear\s?wheel\s?drive|front\s?wheel\s?drive|all\s?wheel\s?drive)\b', text, re.I)
-    if dr: 
+    # Drivetrain
+    dr = re.search(
+        r"\b(4wd|awd|fwd|rwd|four\s?wheel\s?drive|rear\s?wheel\s?drive|front\s?wheel\s?drive|all\s?wheel\s?drive)\b",
+        text,
+        re.I
+    )
+    if dr:
         raw = dr.group(1).lower()
         if raw in ["awd", "all wheel drive"]:
             d["drivetrain"] = "AWD"
@@ -180,15 +216,22 @@ def parse_listing(text: str) -> dict:
             d["drivetrain"] = "FWD"
         elif raw in ["rwd", "rear wheel drive"]:
             d["drivetrain"] = "RWD"
-            
+
+    # First Craigslist image URL, if present in the raw listing text/html
+    img = IMAGE_URL_RE.search(text)
+    if img:
+        d["image_url"] = img.group(0)
+
     return d
+
 
 # -------------------- HTTP ENTRY --------------------
 def extract_http(request: Request):
     """
-    Reads latest (or requested) run's TXT listings and writes ONE-LINE JSON records to:
+    Reads latest or requested run's TXT listings and writes one-line JSON records to:
       gs://<bucket>/<STRUCTURED_PREFIX>/run_id=<run_id>/jsonl/<post_id>.jsonl
-    Request JSON (optional):
+
+    Request JSON optional:
       { "run_id": "<...>", "max_files": 0, "overwrite": false }
     """
     logging.getLogger().setLevel(logging.INFO)
@@ -201,22 +244,30 @@ def extract_http(request: Request):
     except Exception:
         body = {}
 
-    run_id    = body.get("run_id")
-    max_files = int(body.get("max_files") or 0)        # 0 = unlimited
+    run_id = body.get("run_id")
+    max_files = int(body.get("max_files") or 0)        # 0 means unlimited
     overwrite = bool(body.get("overwrite") or False)
 
     # Pick newest run if not provided
     if not run_id:
         runs = _list_run_ids(BUCKET_NAME, SCRAPES_PREFIX)
         if not runs:
-            return jsonify({"ok": False, "error": f"no run_ids found under {SCRAPES_PREFIX}/"}), 200
+            return jsonify({
+                "ok": False,
+                "error": f"no run_ids found under {SCRAPES_PREFIX}/"
+            }), 200
         run_id = runs[-1]
 
     scraped_at_iso = _parse_run_id_as_iso(run_id)
 
     txt_blobs = _txt_objects_for_run(run_id)
     if not txt_blobs:
-        return jsonify({"ok": False, "run_id": run_id, "error": "no .txt files found for run"}), 200
+        return jsonify({
+            "ok": False,
+            "run_id": run_id,
+            "error": "no .txt files found for run"
+        }), 200
+
     if max_files > 0:
         txt_blobs = txt_blobs[:max_files]
 
@@ -229,6 +280,10 @@ def extract_http(request: Request):
             fields = parse_listing(text)
 
             post_id = os.path.splitext(os.path.basename(name))[0]
+
+            if "image_url" in fields:
+                logging.info(f"Found image URL for post_id={post_id}")
+
             record = {
                 "post_id": post_id,
                 "run_id": run_id,
@@ -253,12 +308,13 @@ def extract_http(request: Request):
 
     result = {
         "ok": True,
-        "version": "extractor-v3-jsonl-flex",
+        "version": "extractor-v3-jsonl-flex-image-url",
         "run_id": run_id,
         "processed_txt": processed,
         "written_jsonl": written,
         "skipped_existing": skipped,
-        "errors": errors
+        "errors": errors,
     }
+
     logging.info(json.dumps(result))
     return jsonify(result), 200
