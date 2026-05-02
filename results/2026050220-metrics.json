@@ -1,0 +1,17 @@
+{
+  "run_ts": "2026-05-02T20:20:35.554520+00:00",
+  "today_local": "2026-05-02",
+  "train_rows": 199,
+  "holdout_rows": 262,
+  "mae_today": 7538.56942462891,
+  "rmse_today": 15718.337281055581,
+  "mape_today": 5925.300332060074,
+  "bias_today": -1810.1641488025791,
+  "best_cv_mae": 6757.709488126978,
+  "best_params": {
+    "model__learning_rate": 0.05,
+    "model__max_depth": 5,
+    "model__min_samples_leaf": 10,
+    "model__n_estimators": 300
+  }
+}
