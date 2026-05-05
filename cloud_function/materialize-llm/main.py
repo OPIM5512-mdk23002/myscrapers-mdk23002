@@ -34,8 +34,9 @@ CSV_COLUMNS = [
     "price", "year", "make", "model", "mileage",
     "transmission", "drivetrain", "fuel_type", "engine_cylinders",
     "condition", "color", "body_type", "title_status",
-    "city", "state", "zip_code",#location fields
-    "source_txt"  
+    "city", "state", "zip_code",  # location fields
+    "image_url",
+    "source_txt"
 ]
 
 def _list_run_ids(bucket: str, structured_prefix: str) -> list[str]:
