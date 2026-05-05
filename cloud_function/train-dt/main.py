@@ -163,8 +163,12 @@ def run_once(dry_run= False):
         X_h = holdout_df[feats]
         y_hat = best_pipe.predict(X_h)
 
-        cols_out = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "transmission", "drivetrain", "fuel_type", "engine_cylinders", 
-                    "condition", "color", "body_type", "title_status"]  # core + LLM fields for output
+        cols_out = ["post_id", "scraped_at", "make", "model", "year", "mileage", "price", "transmission", "drivetrain", "fuel_type", "engine_cylinders",
+                    "condition", "color", "body_type", "title_status", "image_url"]  # core + LLM fields for output
+
+        # Keep only columns that exist so older datasets do not break the function
+        cols_out = [col for col in cols_out if col in holdout_df.columns]
+
         preds_df = holdout_df[cols_out].copy()
         preds_df["actual_price"] = holdout_df["price_num"]       # cleaned numeric truth
         preds_df["pred_price"]   = np.round(y_hat, 2)
