@@ -353,6 +353,7 @@ def llm_extract_http(request: Request):
                 "run_id": base_rec.get("run_id", run_id),
                 "scraped_at": base_rec.get("scraped_at", structured_iso),
                 "source_txt": source_txt_key,
+                "image_url": base_rec.get("image_url"),
                 "price": parsed.get("price"),
                 "year": parsed.get("year"),
                 "make": parsed.get("make"),
