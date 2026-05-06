@@ -1,5 +1,5 @@
-# OPIM 5512 Craigslist Auto Listings Scraper and Price Prediction Pipeline
-# * Mark Kulaga
+# OPIM 5512/5509 Craigslist Auto Listings Scraper and Price Prediction Pipeline
+# * Mark Kulaga, Andrew Ghali, Joseph Berkowitz
 
 This repo contains an automated pipeline that scrapes data from Craigslist car listings and makes price predictions.
 
