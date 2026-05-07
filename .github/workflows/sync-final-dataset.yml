@@ -1,0 +1,144 @@
+name: Sync Final Modeling Dataset to Repo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+env:
+  PROJECT_ID: ${{ vars.PROJECT_ID }}
+  BUCKET_NAME: ${{ vars.BUCKET_NAME }}
+  WORKLOAD_IDENTITY_PROVIDER: ${{ vars.WORKLOAD_IDENTITY_PROVIDER }}
+  DEPLOYER_SA: ${{ vars.DEPLOYER_SA }}
+
+  # GCS source file created by materialize-llm
+  GCS_DATASET_KEY: "structured/datasets/listings_llm.csv"
+
+  # Repo destination file
+  OUTPUT_DIR: "data"
+  OUTPUT_FILE: "final_modeling_listings.csv"
+
+jobs:
+  sync_dataset:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auth with Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.DEPLOYER_SA }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Download final modeling dataset
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p "${OUTPUT_DIR}"
+
+          GCS_PATH="gs://${BUCKET_NAME}/${GCS_DATASET_KEY}"
+          LOCAL_PATH="${OUTPUT_DIR}/${OUTPUT_FILE}"
+
+          echo "Checking for dataset at ${GCS_PATH}"
+
+          if gsutil -q stat "${GCS_PATH}" 2>/dev/null; then
+            gsutil cp "${GCS_PATH}" "${LOCAL_PATH}"
+            echo "Downloaded ${GCS_PATH} to ${LOCAL_PATH}"
+          else
+            echo "::error::Dataset not found at ${GCS_PATH}"
+            exit 1
+          fi
+
+          python - <<'PY'
+          import os
+          import pandas as pd
+
+          path = os.path.join(os.environ["OUTPUT_DIR"], os.environ["OUTPUT_FILE"])
+          df = pd.read_csv(path)
+
+          required_cols = [
+              "post_id",
+              "price",
+              "year",
+              "make",
+              "model",
+              "mileage",
+              "image_url",
+              "source_txt",
+              "combined_text",
+              "combined_text_len",
+              "has_combined_text",
+          ]
+
+          missing = [c for c in required_cols if c not in df.columns]
+          if missing:
+              raise ValueError(f"Missing required columns: {missing}")
+
+          row_count = len(df)
+          text_lengths = df["combined_text"].fillna("").astype(str).str.len()
+          nonempty_text = text_lengths.gt(0).sum()
+          usable_text = text_lengths.gt(50).sum()
+          image_url_count = df["image_url"].fillna("").astype(str).str.len().gt(0).sum()
+          file_size_mb = os.path.getsize(path) / (1024 * 1024)
+
+          print("Rows:", row_count)
+          print("Rows with non-empty combined_text:", nonempty_text)
+          print("Rows with combined_text length > 50:", usable_text)
+          print("Rows with image_url:", image_url_count)
+          print("File size MB:", round(file_size_mb, 2))
+
+          if row_count == 0:
+              raise ValueError("Dataset is empty.")
+
+          if nonempty_text == 0:
+              raise ValueError("combined_text exists but is empty for all rows.")
+
+          if usable_text < max(10, int(0.50 * row_count)):
+              raise ValueError(
+                  "Too few rows have usable combined_text. "
+                  "Check materialize-llm backfill logic and GCS permissions."
+              )
+
+          if image_url_count == 0:
+              raise ValueError(
+                  "No image_url values found. "
+                  "This would block the image-modeling section."
+              )
+
+          if file_size_mb > 95:
+              raise ValueError(
+                  "Dataset is too close to GitHub's 100 MB hard file limit. "
+                  "Use a smaller modeling export, Git LFS, or a release asset."
+              )
+          PY
+
+      - name: Commit and push dataset
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git add "${OUTPUT_DIR}/${OUTPUT_FILE}"
+
+          echo "Prepared dataset artifact: ${OUTPUT_DIR}/${OUTPUT_FILE}"
+          ls -lh "${OUTPUT_DIR}/${OUTPUT_FILE}"
+
+          git diff --staged --quiet && echo "No dataset changes to commit" && exit 0
+
+          git commit -m "Sync final modeling dataset"
+          git pull --rebase origin main
+          git push
