@@ -151,6 +151,47 @@ def _safe_int(x):
         return int(str(x).replace(",", "").strip())
     except Exception:
         return None
+    
+def _clean_listing_text_for_modeling(raw_text: str) -> str:
+    """
+    Clean raw Craigslist listing text for downstream text modeling.
+
+    Important:
+    - Keep seller/title/description language.
+    - Remove URLs and image_url lines.
+    - Remove obvious price strings to reduce target leakage.
+    - Normalize whitespace and lowercase text.
+
+    We do not save raw_listing_text directly because it can contain price leakage
+    and unnecessary page/navigation text.
+    """
+    if not raw_text:
+        return ""
+
+    text = str(raw_text)
+
+    # Remove image URL lines added by the scraper.
+    text = re.sub(r"(?im)^\s*image_url\s*:\s*.*$", " ", text)
+
+    # Remove URLs.
+    text = re.sub(r"https?://\S+", " ", text)
+
+    # Remove explicit price lines.
+    text = re.sub(
+        r"(?im)^\s*(price|asking price|listed price)\s*[:\-]\s*.*$",
+        " ",
+        text
+    )
+
+    # Remove obvious dollar amounts to reduce direct price leakage.
+    text = re.sub(r"\$\s*\d{1,3}(?:,\d{3})+(?:\.\d+)?", " ", text)
+    text = re.sub(r"\$\s*\d+(?:\.\d+)?", " ", text)
+
+    # Normalize text.
+    text = text.lower()
+    text = re.sub(r"\s+", " ", text)
+
+    return text.strip()
 
 
 # -------------------- VERTEX AI CALL --------------------
@@ -236,8 +277,11 @@ def _vertex_extract_fields(raw_text: str) -> dict:
                 logging.error(f"Fatal/non-retryable LLM error or max retries reached: {e}")
                 raise
             
-            sleep_time = LLM_RETRY._calculate_sleep(attempt)
-            logging.warning(f"Transient LLM error on attempt {attempt+1}/{max_attempts}. Retrying in {sleep_time:.2f}s...")
+            sleep_time = min(30.0, 5.0 * (2 ** attempt))
+            logging.warning(
+                f"Transient LLM error on attempt {attempt+1}/{max_attempts}. "
+                f"Retrying in {sleep_time:.2f}s..."
+            )
             time.sleep(sleep_time)
 
     if resp is None:
@@ -344,6 +388,7 @@ def llm_extract_http(request: Request):
 
             # Fetch the raw listing TXT; send to LLM
             raw_listing = _download_text(source_txt_key)
+            combined_text = _clean_listing_text_for_modeling(raw_listing)
 
             parsed = _vertex_extract_fields(raw_listing)
 
@@ -354,12 +399,19 @@ def llm_extract_http(request: Request):
                 "scraped_at": base_rec.get("scraped_at", structured_iso),
                 "source_txt": source_txt_key,
                 "image_url": base_rec.get("image_url"),
+
+                # Text-modeling fields
+                "combined_text": combined_text,
+                "combined_text_len": len(combined_text),
+                "has_combined_text": bool(combined_text),
+
                 "price": parsed.get("price"),
                 "year": parsed.get("year"),
                 "make": parsed.get("make"),
                 "model": parsed.get("model"),
                 "mileage": parsed.get("mileage"),
-                #new llm fields
+
+                # new LLM fields
                 "transmission": parsed.get("transmission"),
                 "drivetrain": parsed.get("drivetrain"),
                 "fuel_type": parsed.get("fuel_type"),
@@ -368,11 +420,13 @@ def llm_extract_http(request: Request):
                 "color": parsed.get("color"),
                 "body_type": parsed.get("body_type"),
                 "title_status": parsed.get("title_status"),
-                #location fields
+
+                # location fields
                 "city": parsed.get("city"),
                 "state": parsed.get("state"),
                 "zip_code": parsed.get("zip_code"),
-                #llm metadata fields
+
+                # LLM metadata fields
                 "llm_provider": "vertex",
                 "llm_model": LLM_MODEL,
                 "llm_ts": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
