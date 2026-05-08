@@ -1,7 +1,7 @@
 # OPIM 5512/5509 Craigslist Auto Listings Scraper and Price Tier Classification
-# * Mark Kulaga, Andrew Ghali, Joseph Berkowitz
+# ** Mark Kulaga, Andrew Ghali, Joseph Berkowitz**
 
-This repo contains an automated pipeline that scrapes Craigslist car listings, extracts structured listing data, and supports a final deep learning project for classifying vehicles into low, medium, and high price tiers.
+This repo contains an automated pipeline that scrapes Craigslist car listings, extracts structured listing data, and supports a project classifying vehicles into low, medium, and high price tiers.
 
 We modified the original scraper and prediction pipeline to support a multi-modal modeling workflow. The updated pipeline now collects structured vehicle fields, listing text, and image URLs, then materializes a final modeling dataset used for structured, text, image, and combined deep learning models.
 
