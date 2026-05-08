@@ -1,20 +1,32 @@
-# OPIM 5512/5509 Craigslist Auto Listings Scraper and Price Prediction Pipeline
+# OPIM 5512/5509 Craigslist Auto Listings Scraper and Price Tier Classification
 # * Mark Kulaga, Andrew Ghali, Joseph Berkowitz
 
-This repo contains an automated pipeline that scrapes data from Craigslist car listings and makes price predictions.
+This repo contains an automated pipeline that scrapes Craigslist car listings, extracts structured listing data, and supports a final deep learning project for classifying vehicles into low, medium, and high price tiers.
 
-I modified the baseline structure and files of the repo to expand the pipeline. Now, it scrapes data from Craigslist, extracts structured features with an LLM, trains a tuned GradientBoosting model, and then syncs predictions and interpretability artifacts back to the results folder in the repo. All this runs hourly on Google Cloud Platform.
+We modified the original scraper and prediction pipeline to support a multi-modal modeling workflow. The updated pipeline now collects structured vehicle fields, listing text, and image URLs, then materializes a final modeling dataset used for structured, text, image, and combined deep learning models.
 
 ## Detailed Additions
-### Some of the specific additions I made to the repo for A08 are:
-* Extending the LLM schema to capture transmission, drivetrain, fuel type, engine cylinders, condition, color, body typr, title status, and lcoation fileds such as City, State, and ZIP Code.
-* Modifying train-dt to replace the existing model with a more complex one using GridSearchCV hyperparameter tuning
-* Adding error metrics, permutation importance, and PDPs as synced model artifacts
-* Adding my Model Analysis notebook to the repo root folder as a way of redundant access in case the links for it on colab do not work
+### Some of the specific additions made to the repo include:
+* Extending the LLM extraction schema to capture vehicle fields such as transmission, drivetrain, fuel type, engine cylinders, condition, color, body type, title status, and location fields.
+* Adding `combined_text`, `combined_text_len`, and `has_combined_text` so listing text can be used in LSTM-based models.
+* Preserving `image_url` values so listing photos can be used in image-based models.
+* Creating a final modeling dataset at `data/final_modeling_listings.csv`.
+* Building and comparing structured baseline, text-only LSTM, image-only ConvNet, structured + text, and structured + text + image models.
+* Adding model evaluation outputs including accuracy, weighted F1, classification reports, confusion matrices, and qualitative error analysis.
+
+## Final Modeling Result
+The best-performing model was the **Structured + Text** model, which combined structured vehicle fields with listing text.
+
+* Accuracy: 0.7634
+* Weighted F1: 0.7559
+
+The main takeaway is that structured vehicle fields carried most of the predictive signal, while listing text added a modest improvement. Image data contained some signal on its own, but adding images to the full fused model did not improve performance on this small dataset.
 
 ## Important Changes to Repo Layout
-* cloud_function/extractor-llm-poc/ — LLM extraction logic
-* cloud_function/materialize-llm/ — JSONL to CSV aggregation
-* cloud_function/train-dt/ — Updated model training and evaluation
-* .github/workflows/ — deployment and sync-data.yml workflows
-* results/ — accumulated model outputs from each hourly run
+* `cloud_function/extractor-llm-poc/` — LLM extraction logic and combined text creation
+* `cloud_function/materialize-llm/` — JSONL to CSV aggregation for the final modeling dataset
+* `cloud_function/scraper_cars/` — Craigslist scraping logic
+* `.github/workflows/` — deployment and dataset sync workflows
+* `data/` — final modeling dataset
+* `notebook/` — modeling notebooks and summaries
+* `results/` — synced outputs and modeling artifacts
