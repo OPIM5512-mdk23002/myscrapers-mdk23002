@@ -1,0 +1,50 @@
+[
+  {
+    "feature": "year_num",
+    "importance_mean": 4679.471052033201
+  },
+  {
+    "feature": "mileage_num",
+    "importance_mean": 2492.736758908906
+  },
+  {
+    "feature": "body_type",
+    "importance_mean": 685.1625414526479
+  },
+  {
+    "feature": "engine_cylinders",
+    "importance_mean": 610.0866047705638
+  },
+  {
+    "feature": "make",
+    "importance_mean": 544.2892612514501
+  },
+  {
+    "feature": "drivetrain",
+    "importance_mean": 521.9374816930675
+  },
+  {
+    "feature": "transmission",
+    "importance_mean": 436.3362871180543
+  },
+  {
+    "feature": "color",
+    "importance_mean": 365.29274818845226
+  },
+  {
+    "feature": "fuel_type",
+    "importance_mean": 160.19607455644302
+  },
+  {
+    "feature": "model",
+    "importance_mean": 73.88642777006729
+  },
+  {
+    "feature": "title_status",
+    "importance_mean": 0.0
+  },
+  {
+    "feature": "condition",
+    "importance_mean": -27.258388699889444
+  }
+]
