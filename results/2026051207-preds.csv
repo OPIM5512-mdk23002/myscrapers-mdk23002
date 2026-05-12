@@ -1,0 +1,124 @@
+post_id,scraped_at,make,model,year,mileage,price,transmission,drivetrain,fuel_type,engine_cylinders,condition,color,body_type,title_status,image_url,actual_price,pred_price
+7930457591,2026-05-12T04:00:13Z,Honda,HR-V,2019,45808.0,19319.0,automatic,4wd,gasoline,4.0,good,Gray,suv,clean,https://images.craigslist.org/00X0X_ec96CeQdWRv_0jm0ew_600x450.jpg,19319.0,21014.45
+7931243504,2026-05-12T04:00:13Z,Jeep,Liberty,2012,114000.0,6885.0,automatic,4wd,gasoline,6.0,like new,green,suv,clean,https://images.craigslist.org/00N0N_6Kr4QNqnrMU_0CI0t2_600x450.jpg,6885.0,6444.09
+7931473651,2026-05-12T04:00:13Z,Audi,A6,2019,42250.0,17000.0,automatic,,gasoline,,like new,black,sedan,clean,https://images.craigslist.org/00z0z_4Aa0ivJ8Yea_0CI0t2_600x450.jpg,17000.0,17268.38
+7931207028,2026-05-12T04:00:13Z,GMC,Savana,2019,100000.0,16500.0,automatic,,gasoline,8.0,good,,van,clean,https://images.craigslist.org/00A0A_eQPRPuc7TbZ_0CI0t2_600x450.jpg,16500.0,18122.47
+7931477013,2026-05-12T04:00:13Z,Ford,Edge,2018,137105.0,10800.0,automatic,awd,gasoline,4.0,good,Gray,suv,clean,https://images.craigslist.org/00d0d_asQ9UgPlvRG_0ew0aT_600x450.jpg,10800.0,14787.48
+7931637067,2026-05-12T04:00:13Z,Jeep,Compass,2022,33282.0,21595.0,automatic,4wd,gasoline,4.0,good,red,suv,clean,https://images.craigslist.org/01414_eLf69PmDfwT_0jm0ew_600x450.jpg,21595.0,14942.17
+7930464411,2026-05-12T04:00:13Z,Honda,Element,2009,138876.0,11400.0,automatic,4wd,gasoline,4.0,,red,suv,clean,https://images.craigslist.org/01414_9we9x0qSRST_0ew0aT_600x450.jpg,11400.0,4589.77
+7931148058,2026-05-12T04:00:13Z,Dodge,Grand Caravan,2016,180000.0,4800.0,automatic,fwd,gasoline,6.0,like new,Black,van,clean,https://images.craigslist.org/00e0e_dUr0IeFXtG4_0CI0t2_600x450.jpg,4800.0,15378.68
+7931914889,2026-05-12T04:00:13Z,Dodge,Dart,2013,155000.0,3800.0,automatic,,gasoline,,good,,,clean,https://images.craigslist.org/00Y0Y_lkcoEintDS7_0CI0t2_600x450.jpg,3800.0,5593.48
+7931153153,2026-05-12T04:00:13Z,Buick,Envista,2024,15753.0,19997.0,automatic,fwd,gasoline,3.0,good,Black,suv,clean,https://images.craigslist.org/00J0J_1DunOINwUP2_0jm0ew_600x450.jpg,19997.0,25183.89
+7931575636,2026-05-12T04:00:13Z,Ford,Ranger,2002,90344.0,7995.0,automatic,4wd,gasoline,6.0,good,Gold,truck,clean,https://images.craigslist.org/00g0g_3rW2EEgYynw_0CI0qM_600x450.jpg,7995.0,3099.22
+7931587966,2026-05-12T04:00:13Z,Nissan,Sentra,2010,134000.0,2950.0,automatic,,gasoline,,good,,,clean,https://images.craigslist.org/00v0v_2Yqo1RNvblR_0lM0t2_600x450.jpg,2950.0,5921.99
+7931386284,2026-05-12T04:00:13Z,Subaru,Outback,2015,176255.0,7998.0,automatic,awd,gasoline,4.0,good,White,wagon,clean,https://images.craigslist.org/00I0I_5guWbA6ywBR_0gR0by_600x450.jpg,7998.0,7302.62
+7932018353,2026-05-12T04:00:13Z,Cadillac,ATS,2015,80600.0,13800.0,automatic,awd,gasoline,4.0,good,Tan,sedan,clean,https://images.craigslist.org/00n0n_3DiDzhjBkX0_0ew0aT_600x450.jpg,13800.0,9570.68
+7932018391,2026-05-12T04:00:13Z,Honda,Civic,2012,49900.0,9800.0,automatic,fwd,gasoline,4.0,like new,Black,sedan,clean,https://images.craigslist.org/01313_95sjLMfYCDV_0ew0aT_600x450.jpg,9800.0,10228.26
+7932072634,2026-05-12T04:00:13Z,Tesla,Model Y,2021,61000.0,5000.0,automatic,4wd,electric,,like new,white,wagon,clean,https://images.craigslist.org/00J0J_7K7GYl00aWA_0lT0hq_600x450.jpg,5000.0,2251.55
+7932354365,2026-05-12T04:00:13Z,Dodge,Grand Caravan,2017,56795.0,9997.0,automatic,fwd,gasoline,6.0,good,White,van,clean,https://images.craigslist.org/00I0I_22DfeUVPlbg_0jm0ew_600x450.jpg,9997.0,19709.2
+7932269676,2026-05-12T04:00:13Z,Honda,Odyssey,2021,35912.0,32979.0,automatic,fwd,gasoline,6.0,good,Gray,van,clean,https://images.craigslist.org/00V0V_dBbiFumnC2O_0jm0ew_600x450.jpg,32979.0,52026.02
+7932589325,2026-05-12T04:00:13Z,Mercedes-Benz,CLK-Class,1999,39501.0,10900.0,automatic,rwd,gasoline,6.0,,Silver,convertible,clean,https://images.craigslist.org/00P0P_aJoE4kshSAj_0ew0aT_600x450.jpg,10900.0,11084.97
+7932590653,2026-05-12T04:00:13Z,Mercedes-Benz,S-Class,2014,83873.0,20900.0,automatic,awd,gasoline,8.0,,Gray,sedan,clean,https://images.craigslist.org/00r0r_2VBeu21uxEy_0ew0aT_600x450.jpg,20900.0,19327.72
+7932589476,2026-05-12T04:00:13Z,Chevrolet,Silverado,2012,130790.0,13900.0,automatic,4wd,gasoline,8.0,good,red,truck,clean,https://images.craigslist.org/01515_NESPlncXId_0eu0aS_600x450.jpg,13900.0,14541.1
+7932590561,2026-05-12T04:00:13Z,Chevrolet,Bel Air,1956,1250.0,175000.0,manual,,gasoline,,good,black,convertible,clean,https://images.craigslist.org/00g0g_1JQsgqgRZqV_0aT0aT_600x450.jpg,175000.0,173510.59
+7932588146,2026-05-12T04:00:13Z,Land Rover,Range Rover Sport,2019,60999.0,30500.0,automatic,awd,gasoline,8.0,,white,suv,clean,https://images.craigslist.org/00b0b_8HVJp1nrcCc_0ew0aT_600x450.jpg,30500.0,24157.18
+7932794506,2026-05-12T04:00:13Z,Toyota,Highlander,2010,191959.0,8900.0,automatic,awd,gasoline,6.0,like new,Gray,suv,clean,https://images.craigslist.org/00101_dgn3z3Fu2zR_0ew0aT_600x450.jpg,8900.0,7322.11
+7933094312,2026-05-12T04:00:13Z,Jeep,Compass,2020,73100.0,14750.0,automatic,4wd,gasoline,4.0,good,white,suv,clean,https://images.craigslist.org/00C0C_cEPS9EPM3cZ_0t30CI_600x450.jpg,14750.0,13218.03
+7933162247,2026-05-12T04:00:13Z,Toyota,Venza,2014,154941.0,8900.0,automatic,4wd,gasoline,4.0,like new,black,suv,clean,https://images.craigslist.org/01010_2yqTWnvFoPC_0eu0aS_600x450.jpg,8900.0,8865.53
+7933285650,2026-05-12T04:00:13Z,Ford,F-150,2003,190000.0,2.0,automatic,,gasoline,,salvage,,truck,clean,https://images.craigslist.org/00G0G_it5W8qwgCT0_0t20CI_600x450.jpg,2.0,2290.73
+7933320133,2026-05-12T04:00:13Z,Toyota,Tacoma,2011,158594.0,12800.0,automatic,4wd,gasoline,6.0,good,white,truck,clean,https://images.craigslist.org/00U0U_3NIO84yontb_0kE0fu_600x450.jpg,12800.0,8332.65
+7933403099,2026-05-12T04:00:13Z,Jeep,Grand Cherokee,2023,49437.0,28397.0,automatic,4wd,gasoline,6.0,good,white,suv,clean,https://images.craigslist.org/00G0G_fXiQufVW1Tf_0jm0ew_600x450.jpg,28397.0,41047.27
+7933456822,2026-05-12T04:00:13Z,Buick,Encore,2016,93000.0,10885.0,automatic,awd,gasoline,4.0,like new,brown,suv,clean,https://images.craigslist.org/01010_f2EOyeLjShR_0CI0t2_600x450.jpg,10885.0,8150.69
+7930434432,2026-05-12T05:00:08Z,Subaru,Outback,2014,106997.0,10998.0,automatic,awd,gasoline,4.0,,Tan,wagon,clean,https://images.craigslist.org/00L0L_l7FZcYBSyb6_0gI0cu_600x450.jpg,10998.0,9744.43
+7931451340,2026-05-12T05:00:08Z,Buick,Encore GX,2023,13586.0,22997.0,automatic,awd,gasoline,3.0,good,blue,suv,clean,https://images.craigslist.org/00Q0Q_d8HYsjcQjbo_0jm0ew_600x450.jpg,22997.0,18077.75
+7931555233,2026-05-12T05:00:08Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,https://images.craigslist.org/00V0V_HXt2haK8gO_0CI0lM_600x450.jpg,3288.0,3238.48
+7931154323,2026-05-12T05:00:08Z,Chevrolet,Express,2010,280000.0,4800.0,automatic,,gasoline,8.0,good,grey,van,clean,https://images.craigslist.org/00q0q_1lz18BquwZp_0gl0t2_600x450.jpg,4800.0,10803.5
+7931465356,2026-05-12T05:00:08Z,Nissan,Altima,2003,59000.0,2500.0,automatic,rwd,gasoline,4.0,good,green,sedan,clean,https://images.craigslist.org/00A0A_7iudLwocMSe_0CI0lM_600x450.jpg,2500.0,-2113.08
+7931482429,2026-05-12T05:00:08Z,Chevrolet,Colorado,2018,167341.0,12850.0,automatic,4wd,gasoline,6.0,good,black,truck,clean,https://images.craigslist.org/00a0a_lu3dguX2KDo_0eu0aS_600x450.jpg,12850.0,20555.59
+7931473944,2026-05-12T05:00:08Z,Volkswagen,Tiguan,2023,23000.0,20000.0,automatic,,gasoline,,good,Grey,suv,clean,https://images.craigslist.org/00l0l_9ctoGUeLRy_0jm0aT_600x450.jpg,20000.0,20390.32
+7930505544,2026-05-12T05:00:08Z,GMC,Sierra,2013,170000.0,9885.0,automatic,4wd,gasoline,8.0,like new,Blue,truck,clean,https://images.craigslist.org/00a0a_7z0fLzc3br3_0CI0t2_600x450.jpg,9885.0,6270.63
+7930678647,2026-05-12T05:00:08Z,Toyota,Sequoia,2006,167781.0,6995.0,automatic,4wd,gasoline,8.0,good,Gray,suv,clean,https://images.craigslist.org/00w0w_tQ7xiwEo0y_0eu0aS_600x450.jpg,6995.0,5560.97
+7930750735,2026-05-12T05:00:08Z,GMC,Terrain,2022,37500.0,19997.0,automatic,awd,gasoline,4.0,,Black,suv,clean,https://images.craigslist.org/00f0f_iPkSj9Ls4ir_0jm0ew_600x450.jpg,19997.0,22853.6
+7931482165,2026-05-12T05:00:08Z,Chevrolet,Camaro,1969,62273.0,77800.0,manual,,gasoline,,,Red,coupe,clean,https://images.craigslist.org/00Y0Y_5GEnhN0VIyc_0aT0aT_600x450.jpg,77800.0,27697.61
+7930465949,2026-05-12T05:00:08Z,Kia,Optima,2015,116669.0,8800.0,automatic,,gasoline,4.0,,silver,sedan,clean,https://images.craigslist.org/00W0W_ahMYg8t00pb_0eu0aS_600x450.jpg,8800.0,5889.77
+7931025699,2026-05-12T05:00:08Z,Ford,Focus,2012,157000.0,3200.0,automatic,fwd,gasoline,4.0,good,red,hatchback,clean,https://images.craigslist.org/00z0z_hQictQHAZEI_0CI0t2_600x450.jpg,3200.0,7298.48
+7930464303,2026-05-12T05:00:08Z,Jeep,Grand Cherokee,2017,119911.0,14900.0,automatic,4wd,gasoline,6.0,,Blue,suv,clean,https://images.craigslist.org/00x0x_6h2fA705qlv_0ew0aT_600x450.jpg,14900.0,15767.64
+7931843769,2026-05-12T05:00:08Z,Volvo,XC60,2016,126000.0,8885.0,automatic,awd,gasoline,5.0,like new,grey,suv,clean,https://images.craigslist.org/00909_3hnWumD1Emy_0CI0t2_600x450.jpg,8885.0,9672.11
+7931992818,2026-05-12T05:00:08Z,Dodge,Grand Caravan,2008,60200.0,6400.0,automatic,fwd,gasoline,6.0,like new,Black,van,clean,https://images.craigslist.org/00f0f_5GhcBx0QTHw_0t20CI_600x450.jpg,6400.0,3851.02
+7931696144,2026-05-12T05:00:08Z,Volvo,Xc70,2007,250000.0,1000.0,automatic,4wd,gasoline,5.0,good,Grey,suv,clean,https://images.craigslist.org/00A0A_ebr5ctt2CsN_0CI0lM_600x450.jpg,1000.0,2098.94
+7932291745,2026-05-12T05:00:08Z,Tesla,Model Y,2021,61000.0,5000.0,automatic,4wd,electric,6.0,like new,white,wagon,clean,https://images.craigslist.org/00J0J_7K7GYl00aWA_0lT0hq_600x450.jpg,5000.0,8701.58
+7932531406,2026-05-12T05:00:08Z,Mercedes-Benz,SL550,2013,59525.0,31900.0,automatic,rwd,gasoline,8.0,like new,black,convertible,clean,https://images.craigslist.org/00606_hNh30S731XD_0ew0aT_600x450.jpg,31900.0,12667.64
+7932589417,2026-05-12T05:00:08Z,Nissan,Murano,2018,110109.0,14900.0,automatic,4wd,gasoline,6.0,,Gray,suv,clean,https://images.craigslist.org/00Y0Y_3uPPZCQPH4D_0ew0aT_600x450.jpg,14900.0,14095.14
+7932566122,2026-05-12T05:00:08Z,Kia,Optima,2015,102000.0,2500.0,automatic,fwd,gasoline,4.0,,blue,sedan,clean,https://images.craigslist.org/00101_kPkTHi3235Y_0CI0t2_600x450.jpg,2500.0,4557.22
+7932589839,2026-05-12T05:00:08Z,Jeep,Wrangler,2013,134534.0,12900.0,automatic,4wd,gasoline,6.0,,Silver,suv,clean,https://images.craigslist.org/00C0C_2YxhlFLY4pO_0ew0aT_600x450.jpg,12900.0,9428.46
+7932689744,2026-05-12T05:00:08Z,Toyota,Camry,1999,167845.0,3995.0,automatic,fwd,gasoline,4.0,good,white,,clean,https://images.craigslist.org/00000_kntvx1jGSn5_0CI0t2_600x450.jpg,3995.0,4730.85
+7932836537,2026-05-12T05:00:08Z,Audi,Q7,2014,196800.0,5500.0,automatic,4wd,gasoline,6.0,good,black,truck,clean,https://images.craigslist.org/00g0g_12VMyAJHtHd_0t20CI_600x450.jpg,5500.0,7283.9
+7932921549,2026-05-12T05:00:08Z,Subaru,Outback,2013,145814.0,5900.0,automatic,4wd,gasoline,4.0,like new,black,wagon,clean,https://images.craigslist.org/01616_8Z4hMHsnqSO_0CI0t2_600x450.jpg,5900.0,7070.93
+7932920853,2026-05-12T05:00:08Z,Infiniti,Ex35,2013,89281.0,8900.0,automatic,4wd,gasoline,6.0,like new,grey,suv,clean,https://images.craigslist.org/00N0N_hlS32UHEQGU_0CI0t2_600x450.jpg,8900.0,7687.5
+7932964356,2026-05-12T05:00:08Z,Toyota,Tundra,2005,105000.0,15000.0,automatic,4wd,gasoline,8.0,like new,white,truck,clean,https://images.craigslist.org/00H0H_7Pa6O2B9I9S_0x20oM_600x450.jpg,15000.0,4526.8
+7933011538,2026-05-12T05:00:08Z,Buick,Verano,2013,142000.0,4000.0,automatic,fwd,gasoline,4.0,good,Silver,sedan,clean,https://images.craigslist.org/01313_cI0BSMewyoT_0CI0t2_600x450.jpg,4000.0,7410.9
+7932967218,2026-05-12T05:00:08Z,Chevrolet,Camaro,1995,188000.0,4500.0,automatic,,gasoline,6.0,good,purple,hatchback,missing,https://images.craigslist.org/01515_cYVRxDEVe71_0x20oM_600x450.jpg,4500.0,2609.1
+7932935893,2026-05-12T05:00:08Z,Subaru,Outback,2015,141231.0,10998.0,automatic,awd,gasoline,6.0,,white,wagon,clean,https://images.craigslist.org/00k0k_3fp2P438igV_0hN0cI_600x450.jpg,10998.0,11144.45
+7933031273,2026-05-12T05:00:08Z,Buick,Enclave,2025,6793.0,37799.0,automatic,awd,gasoline,4.0,good,red,suv,clean,https://images.craigslist.org/00B0B_eT2JzaIdB8N_0jm0ew_600x450.jpg,37799.0,50115.39
+7933112011,2026-05-12T05:00:08Z,Ford,Fusion,2012,161000.0,4450.0,automatic,fwd,gasoline,4.0,like new,black,sedan,clean,https://images.craigslist.org/00G0G_ixx2qbHCcyd_0hq0hq_600x450.jpg,4450.0,6166.69
+7933161399,2026-05-12T05:00:08Z,Subaru,Forester,2023,113437.0,18900.0,automatic,awd,gasoline,4.0,like new,Black,suv,clean,https://images.craigslist.org/00505_dhcDiBe70Sl_0ew0aT_600x450.jpg,18900.0,16834.72
+7933225745,2026-05-12T05:00:08Z,Mazda,Mpv,2001,140000.0,3000.0,automatic,4wd,gasoline,4.0,good,silver,van,clean,https://images.craigslist.org/00m0m_kQyUmCxCJfB_0CI0t2_600x450.jpg,3000.0,8693.9
+7933162174,2026-05-12T05:00:08Z,Jeep,Wrangler,2014,163000.0,7500.0,manual,4wd,gasoline,6.0,good,Silver,suv,clean,https://images.craigslist.org/00P0P_aJqTs7FkGtw_0CI0t2_600x450.jpg,7500.0,8164.79
+7933261803,2026-05-12T05:00:08Z,Nissan,Frontier,2011,226000.0,4500.0,automatic,4wd,gasoline,6.0,good,black,truck,clean,https://images.craigslist.org/00M0M_jclL40udMiz_0CI0t2_600x450.jpg,4500.0,2458.8
+7933383957,2026-05-12T05:00:08Z,Nissan,Murano,2014,73000.0,7800.0,automatic,awd,gasoline,,,,convertible,clean,https://images.craigslist.org/00x0x_lj0vY6lFlmF_0CI0t2_600x450.jpg,7800.0,8928.69
+7933450207,2026-05-12T05:00:08Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,https://images.craigslist.org/00909_1cBmgLFXJwg_0CI0lM_600x450.jpg,3288.0,3238.48
+7933337650,2026-05-12T05:00:08Z,Honda,Odyssey,2006,243098.0,3975.0,automatic,fwd,gasoline,6.0,good,silver,van,clean,https://images.craigslist.org/01212_5GGLtlOdjuc_0CI0mc_600x450.jpg,3975.0,4296.71
+7933462556,2026-05-12T05:00:08Z,Honda,Civic,2011,56000.0,3200.0,automatic,fwd,,4.0,good,white,sedan,clean,https://images.craigslist.org/00101_6APKtJg4uWU_0CI0t2_600x450.jpg,3200.0,5416.68
+7933551440,2026-05-12T05:00:08Z,GMC,Sierra 1500,2013,185000.0,5800.0,automatic,4wd,gasoline,8.0,like new,grey,truck,clean,https://images.craigslist.org/00h0h_fekdrG9LFEO_0CI0t2_600x450.jpg,5800.0,6834.53
+7933620624,2026-05-12T05:00:08Z,Honda,CR-V,2013,178000.0,7200.0,automatic,awd,gasoline,4.0,good,brown,suv,clean,https://images.craigslist.org/00P0P_ibDb8YNmajw_0CI0t2_600x450.jpg,7200.0,6321.73
+7933644061,2026-05-12T05:00:08Z,Toyota,4Runner,2016,159726.0,23900.0,automatic,4wd,gasoline,6.0,like new,black,suv,clean,https://images.craigslist.org/00u0u_94FUzxbkzgy_0eu0aS_600x450.jpg,23900.0,16169.82
+7930464493,2026-05-12T06:00:32Z,Chevrolet,Tahoe,2011,178907.0,8500.0,automatic,4wd,,8.0,,red,suv,clean,https://images.craigslist.org/00D0D_fPQzuemxTby_0ew0aT_600x450.jpg,8500.0,4489.81
+7930504909,2026-05-12T06:00:32Z,Kia,Sedona,2012,104000.0,5000.0,automatic,fwd,gasoline,6.0,like new,Black,van,clean,https://images.craigslist.org/00c0c_eDV63WVVUvQ_0CI0t2_600x450.jpg,5000.0,5897.56
+7930975086,2026-05-12T06:00:32Z,Buick,Encore GX,2026,3845.0,26995.0,automatic,awd,gasoline,3.0,good,white,suv,clean,https://images.craigslist.org/00909_i0nYWD3VgSu_0jm0ew_600x450.jpg,26995.0,48466.24
+7930991324,2026-05-12T06:00:32Z,Volkswagen,Passat,2014,86000.0,5000.0,automatic,fwd,gasoline,4.0,good,black,sedan,clean,https://images.craigslist.org/00h0h_aMo8Fk6LIjl_0CI0t2_600x450.jpg,5000.0,6740.44
+7931482526,2026-05-12T06:00:32Z,Toyota,RAV4,2013,125603.0,13885.0,automatic,4wd,gasoline,4.0,,green,suv,clean,https://images.craigslist.org/00j0j_5qTiP32kQtL_0ew0aT_600x450.jpg,13885.0,8139.14
+7930953377,2026-05-12T06:00:32Z,Chevrolet,Silverado,2004,173658.0,3600.0,automatic,,gasoline,8.0,good,,truck,clean,https://images.craigslist.org/00E0E_aLbLbkU6QVg_0Cz0t2_600x450.jpg,3600.0,5135.49
+7931318478,2026-05-12T06:00:32Z,Nissan,Versa,2014,78500.0,,automatic,fwd,gasoline,4.0,like new,Silver,hatchback,clean,https://images.craigslist.org/00E0E_eSyjJid79jQ_0CI0lM_600x450.jpg,,7385.53
+7931651841,2026-05-12T06:00:32Z,Fiat,500,2012,37851.0,7999.0,manual,fwd,gasoline,4.0,good,blue,hatchback,clean,https://images.craigslist.org/01010_hGZn6tSgDFp_0x20iA_600x450.jpg,7999.0,11378.76
+7930833018,2026-05-12T06:00:32Z,Mitsubishi,Outlander,2015,232000.0,2800.0,automatic,,gasoline,4.0,,,suv,clean,https://images.craigslist.org/00000_1svBGebdQm8_0CI0t2_600x450.jpg,2800.0,5183.84
+7930553529,2026-05-12T06:00:32Z,GMC,Acadia,2023,36595.0,25197.0,automatic,awd,gasoline,4.0,good,Black,suv,clean,https://images.craigslist.org/00Z0Z_gu5kFUGoIsi_0jm0ew_600x450.jpg,25197.0,21359.99
+7930904641,2026-05-12T06:00:32Z,Jeep,Liberty,2005,99000.0,3750.0,automatic,4wd,gasoline,6.0,,,suv,clean,https://images.craigslist.org/00M0M_eL0W8T7Sdbg_0CI0t2_600x450.jpg,3750.0,4653.09
+7931515827,2026-05-12T06:00:32Z,Ford,F-150,2005,169000.0,11800.0,automatic,4wd,gasoline,8.0,good,red,truck,clean,https://images.craigslist.org/00O0O_83vc5nbtoL0_0CI0t2_600x450.jpg,11800.0,2332.53
+7931235090,2026-05-12T06:00:32Z,Buick,Encore,2022,30106.0,16579.0,automatic,awd,gasoline,4.0,good,silver,suv,clean,https://images.craigslist.org/00909_jQzCPJw8FXW_0jm0ew_600x450.jpg,16579.0,19131.96
+7931482785,2026-05-12T06:00:32Z,Land Rover,Range Rover Sport,2017,95262.0,16900.0,automatic,,gasoline,6.0,,black,suv,clean,https://images.craigslist.org/00L0L_9rMYBhbnMyl_0ew0aT_600x450.jpg,16900.0,15066.51
+7932008595,2026-05-12T06:00:32Z,Honda,Civic,2015,156884.0,8995.0,automatic,fwd,gasoline,4.0,good,silver,,clean,https://images.craigslist.org/01111_xXRmq5E7GS_09G07g_600x450.jpg,8995.0,8512.73
+7932091876,2026-05-12T06:00:32Z,Chevrolet,Silverado,2016,90000.0,2000.0,automatic,4wd,gasoline,8.0,like new,blue,truck,clean,https://images.craigslist.org/00Z0Z_eKl7PGtX4e6_0lC0hq_600x450.jpg,2000.0,2163.18
+7932125786,2026-05-12T06:00:32Z,BMW,X6,2022,76833.0,43995.0,automatic,awd,gasoline,6.0,good,Black,suv,clean,https://images.craigslist.org/00808_70paIMQMepf_0jm0ew_600x450.jpg,43995.0,30260.53
+7932291553,2026-05-12T06:00:32Z,Toyota,Camry,2018,33000.0,2000.0,automatic,fwd,gasoline,6.0,like new,white,sedan,clean,https://images.craigslist.org/00n0n_hkAoDSvtyT6_0Kj0zY_600x450.jpg,2000.0,2122.82
+7932247827,2026-05-12T06:00:32Z,Volvo,Xc70,2008,150000.0,6000.0,automatic,awd,gasoline,6.0,good,Brown,suv,clean,https://images.craigslist.org/00N0N_bjJqJ4cIuXI_0CI0lP_600x450.jpg,6000.0,4821.56
+7932291705,2026-05-12T06:00:32Z,Toyota,Camry,2018,33000.0,2000.0,automatic,fwd,gasoline,6.0,like new,white,sedan,clean,https://images.craigslist.org/00n0n_hkAoDSvtyT6_0Kj0zY_600x450.jpg,2000.0,2122.82
+7932260863,2026-05-12T06:00:32Z,Acura,Integra,2025,4600.0,30900.0,automatic,fwd,gasoline,4.0,like new,white,sedan,clean,https://images.craigslist.org/00Q0Q_dMpg3mQft0W_0cU09G_600x450.jpg,30900.0,46388.23
+7932292036,2026-05-12T06:00:32Z,Chevrolet,Silverado,2016,90000.0,,automatic,4wd,gasoline,8.0,like new,blue,truck,clean,https://images.craigslist.org/00909_6A8rxxlW7NN_0cU0cB_600x450.jpg,,2163.18
+7932397352,2026-05-12T06:00:32Z,Dodge,Neon,2002,150000.0,3488.0,automatic,,gasoline,,,,,clean,https://images.craigslist.org/01616_itUr9Q3k6qk_0CI0lM_600x450.jpg,3488.0,3238.48
+7932581662,2026-05-12T06:00:32Z,Chevrolet,Impala,2008,194000.0,3450.0,automatic,fwd,gasoline,6.0,like new,,sedan,clean,https://images.craigslist.org/01313_cLhcM7lmlyU_0lM0t2_600x450.jpg,3450.0,3752.36
+7932589516,2026-05-12T06:00:32Z,Ford,Super Duty F-350,2015,264719.0,16900.0,automatic,4wd,diesel,8.0,good,Bronze,truck,clean,https://images.craigslist.org/00b0b_dnyslWw145p_0ew0aT_600x450.jpg,16900.0,17711.11
+7932589658,2026-05-12T06:00:32Z,Jeep,Cherokee,2019,95682.0,13680.0,automatic,4wd,gasoline,6.0,,White,suv,clean,https://images.craigslist.org/00101_4xLDAFFaOXG_0ew0aT_600x450.jpg,13680.0,15854.27
+7932590439,2026-05-12T06:00:32Z,Chevrolet,Camaro,1969,4664.0,58000.0,automatic,,gasoline,,fair,blue,,clean,https://images.craigslist.org/00R0R_7wtUd7qnNex_0aT0aT_600x450.jpg,58000.0,56462.98
+7932589881,2026-05-12T06:00:32Z,Infiniti,Q50,2018,139096.0,13850.0,automatic,4wd,gasoline,6.0,,white,sedan,clean,https://images.craigslist.org/00Z0Z_guuFMRQN4tT_0ew0aT_600x450.jpg,13850.0,14946.56
+7932557599,2026-05-12T06:00:32Z,Chevrolet,Silverado,2016,142000.0,13500.0,automatic,4wd,gasoline,8.0,good,Blue,truck,clean,https://images.craigslist.org/00X0X_8XRLsFnT7He_0CI0t2_600x450.jpg,13500.0,19510.53
+7932589924,2026-05-12T06:00:32Z,Audi,Q3,2020,77916.0,17980.0,automatic,awd,gasoline,4.0,,Gray,suv,clean,https://images.craigslist.org/00P0P_7ezc4UUA7Fl_0ew0aT_600x450.jpg,17980.0,17257.75
+7932742556,2026-05-12T06:00:32Z,Toyota,Camry,2021,88464.0,2999.0,automatic,fwd,gasoline,6.0,good,white,sedan,clean,https://images.craigslist.org/01111_9UYT2mTxOC_0Cz0t2_600x450.jpg,2999.0,20290.41
+7932745787,2026-05-12T06:00:32Z,Mazda,Mazda3,2016,149187.0,8499.0,automatic,fwd,gasoline,4.0,good,red,hatchback,clean,https://images.craigslist.org/00N0N_3cgFQFB8SMz_0CI0t2_600x450.jpg,8499.0,6345.97
+7932880608,2026-05-12T06:00:32Z,Subaru,Wrx Sti,2015,53000.0,22000.0,manual,4wd,gasoline,4.0,good,white,sedan,clean,https://images.craigslist.org/00i0i_g70AmrlMtKe_0xS0pq_600x450.jpg,22000.0,6237.22
+7932826407,2026-05-12T06:00:32Z,Ford,F-150,2014,197000.0,7200.0,automatic,4wd,gasoline,6.0,good,white,truck,clean,https://images.craigslist.org/00s0s_b9YZ63Z5M0e_0CI0t2_600x450.jpg,7200.0,6835.54
+7932920692,2026-05-12T06:00:32Z,Subaru,XV Crosstrek,2014,136625.0,8900.0,automatic,4wd,gasoline,4.0,like new,white,wagon,clean,https://images.craigslist.org/00R0R_1OXCEb3kqYX_0CI0t2_600x450.jpg,8900.0,9724.66
+7932925877,2026-05-12T06:00:32Z,Ford,E-450,2004,92717.0,14500.0,automatic,rwd,gasoline,6.0,good,,truck,clean,https://images.craigslist.org/00J0J_2egwkoLDrSw_0t20CI_600x450.jpg,14500.0,3389.74
+7932967689,2026-05-12T06:00:32Z,Ford,Focus,2014,110900.0,6800.0,automatic,fwd,,4.0,good,Blue,hatchback,clean,https://images.craigslist.org/00202_89X81EFNWHw_0ew0aT_600x450.jpg,6800.0,6926.96
+7933023306,2026-05-12T06:00:32Z,Acura,Tlx,2022,30000.0,2000.0,automatic,,gasoline,,,,sedan,clean,https://images.craigslist.org/00c0c_9Z6ufd8DBEO_0lM0t2_600x450.jpg,2000.0,2049.38
+7933087594,2026-05-12T06:00:32Z,Dodge,Neon,2002,150000.0,3288.0,automatic,,gasoline,,,,,clean,https://images.craigslist.org/00r0r_cOm1ZGKdoHl_0CI0lM_600x450.jpg,3288.0,3238.48
+7933160643,2026-05-12T06:00:32Z,Subaru,Forester,2017,157287.0,8900.0,automatic,awd,gasoline,4.0,like new,black,suv,clean,https://images.craigslist.org/00707_geXux2Yofmi_0eu0aS_600x450.jpg,8900.0,9944.18
+7933111179,2026-05-12T06:00:32Z,Honda,CRV,2008,166000.0,5700.0,automatic,,gasoline,4.0,good,black,suv,clean,https://images.craigslist.org/00Z0Z_eOrO6Ov6I8L_0hq0hq_600x450.jpg,5700.0,3073.25
+7933226811,2026-05-12T06:00:32Z,Subaru,Forester,2012,144000.0,6500.0,automatic,4wd,gasoline,4.0,like new,grey,suv,clean,https://images.craigslist.org/00I0I_2JmVZhdi1Ai_0ww0oo_600x450.jpg,6500.0,8791.83
+7933278185,2026-05-12T06:00:32Z,Land Rover,Range Rover Sport,2016,126000.0,13885.0,automatic,4wd,diesel,6.0,like new,grey,suv,clean,https://images.craigslist.org/00H0H_dWfL2qHqIYM_0CI0t2_600x450.jpg,13885.0,27245.63
+7933225052,2026-05-12T06:00:32Z,Honda,Accord,2005,106670.0,3500.0,automatic,fwd,hybrid,6.0,like new,grey,sedan,clean,https://images.craigslist.org/00G0G_bENw6nZgW1F_0ww0oo_600x450.jpg,3500.0,9564.46
+7933249052,2026-05-12T06:00:32Z,Hyundai,Santa Fe,2016,136000.0,11995.0,automatic,4wd,gasoline,,good,silver,suv,clean,https://images.craigslist.org/00O0O_l5i57EnAgx5_0CI0pO_600x450.jpg,11995.0,13360.21
+7933159220,2026-05-12T06:00:32Z,Subaru,Crosstrek,2019,114950.0,12900.0,automatic,awd,gasoline,4.0,like new,blue,hatchback,clean,https://images.craigslist.org/00o0o_QpzF8UInKO_0eu0aS_600x450.jpg,12900.0,8776.36
+7933290244,2026-05-12T06:00:32Z,Chevrolet,Chevelle,1967,500.0,75000.0,manual,rwd,gasoline,8.0,like new,blue,coupe,clean,https://images.craigslist.org/00W0W_iOpWr8f15jg_0cU09G_600x450.jpg,75000.0,50039.02
+7933412773,2026-05-12T06:00:32Z,Mini,Cooper,2013,98000.0,4500.0,automatic,fwd,gasoline,4.0,like new,Silver,coupe,clean,https://images.craigslist.org/01010_4kWVTph7Z2j_0CI0t2_600x450.jpg,4500.0,8859.43
+7933353274,2026-05-12T06:00:32Z,Toyota,Sequoia,2006,167781.0,6995.0,automatic,4wd,gasoline,,good,grey,suv,clean,https://images.craigslist.org/00w0w_tQ7xiwEo0y_0eu0aS_600x450.jpg,6995.0,4126.25
+7933604689,2026-05-12T06:00:32Z,Cadillac,XTS,2014,152541.0,1600.0,automatic,fwd,gasoline,6.0,like new,,,clean,https://images.craigslist.org/00R0R_4LYwEwSgH1b_0nN0hQ_600x450.jpg,1600.0,7144.79
